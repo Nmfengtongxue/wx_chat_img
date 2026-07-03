@@ -16,6 +16,12 @@ export type DoodleFrameStyle = 'classic' | 'sketch'
 export interface DoodleFont {
   /** CSS font-family 名称 */
   family: string
+  /** FontFace 注册名（内置字体） */
+  loadFamily?: string
+  /** public 目录内置字体路径 */
+  bundledPath?: string
+  /** 对应预设 id */
+  presetId?: string
   /** 上传字体的 base64 data URL，用于持久化 */
   dataUrl?: string
   /** Local Font Access API 返回的 postscript 名 */

@@ -21,7 +21,7 @@ export type AppMode = 'wechat' | 'doodle'
 export default function App() {
   const previewWrapRef = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState('')
-  const [mode, setMode] = useState<AppMode>('wechat')
+  const [mode, setMode] = useState<AppMode>('doodle')
 
   const importWechat = useChatStore((s) => s.importData)
   const resetWechat = useChatStore((s) => s.resetAll)
@@ -38,7 +38,7 @@ export default function App() {
     const el = getTarget()
     if (!el) return
     try {
-      setStatus('正在生成截图…')
+      setStatus(mode === 'doodle' ? '正在生成长截图…' : '正在生成截图…')
       await exportScreenshot(el, { filename: exportName, backgroundColor: exportBg })
       setStatus('截图已下载')
       setTimeout(() => setStatus(''), 2000)
@@ -139,16 +139,16 @@ export default function App() {
         {/* 模式切换 */}
         <div className="flex px-4 sm:px-6 pb-0 gap-1">
           <ModeTab
-            active={mode === 'wechat'}
-            onClick={() => setMode('wechat')}
-            icon={<MessageCircle size={15} />}
-            label="微信仿真"
-          />
-          <ModeTab
             active={mode === 'doodle'}
             onClick={() => setMode('doodle')}
             icon={<Pencil size={15} />}
             label="手绘对话"
+          />
+          <ModeTab
+            active={mode === 'wechat'}
+            onClick={() => setMode('wechat')}
+            icon={<MessageCircle size={15} />}
+            label="微信仿真"
           />
         </div>
       </header>

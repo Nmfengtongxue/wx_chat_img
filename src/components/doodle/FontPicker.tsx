@@ -3,7 +3,10 @@ import { FolderOpen, Type, Upload } from 'lucide-react'
 import { useDoodleStore } from '../../store/useDoodleStore'
 import {
   FONT_PRESETS,
+  applyFontPreset,
+  loadFontFromDataUrl,
   loadFontFromFile,
+  matchFontPreset,
   pickLocalFont,
   supportsLocalFonts,
 } from '../../utils/fonts'
@@ -28,22 +31,40 @@ export function FontPicker() {
   const applyFont = useCallback(
     async (family: string, extra?: { dataUrl?: string; postscriptName?: string }) => {
       if (extra?.dataUrl) {
-        const { loadFontFromDataUrl } = await import('../../utils/fonts')
         const cleanFamily = family.replace(/"/g, '')
         await loadFontFromDataUrl(cleanFamily, extra.dataUrl)
-        updateFont({ family: cleanFamily, dataUrl: extra.dataUrl, postscriptName: extra.postscriptName })
+        updateFont({
+          family: cleanFamily,
+          dataUrl: extra.dataUrl,
+          postscriptName: extra.postscriptName,
+          loadFamily: undefined,
+          bundledPath: undefined,
+          presetId: undefined,
+        })
       } else {
-        updateFont({ family, dataUrl: undefined, postscriptName: extra?.postscriptName })
+        updateFont({
+          family,
+          dataUrl: undefined,
+          postscriptName: extra?.postscriptName,
+          loadFamily: undefined,
+          bundledPath: undefined,
+          presetId: undefined,
+        })
       }
     },
     [updateFont],
   )
 
   useEffect(() => {
+    const preset = matchFontPreset(font)
+    if (preset) {
+      applyFontPreset(preset).catch(() => {})
+      return
+    }
     if (font.dataUrl && font.family) {
-      import('../../utils/fonts').then(({ loadFontFromDataUrl }) => {
-        loadFontFromDataUrl(font.family.replace(/"/g, ''), font.dataUrl!).catch(() => {})
-      })
+      loadFontFromDataUrl(font.loadFamily ?? font.family.replace(/"/g, ''), font.dataUrl).catch(
+        () => {},
+      )
     }
   }, [])
 
@@ -51,7 +72,13 @@ export function FontPicker() {
     setLoading(true)
     try {
       const { family, dataUrl } = await loadFontFromFile(file)
-      updateFont({ family, dataUrl })
+      updateFont({
+        family,
+        dataUrl,
+        loadFamily: family,
+        bundledPath: undefined,
+        presetId: undefined,
+      })
     } finally {
       setLoading(false)
     }
@@ -72,29 +99,43 @@ export function FontPicker() {
     }
   }
 
+  const activePreset = matchFontPreset(font)
   const currentLabel =
-    FONT_PRESETS.find((p) => p.family === font.family)?.label ??
-    (font.dataUrl ? `已上传：${font.family}` : font.family)
+    activePreset?.label ?? (font.dataUrl ? `已上传：${font.family}` : font.family)
+
+  const selectedPresetId = activePreset?.id ?? ''
 
   return (
     <div className="space-y-3">
       <Field label="当前字体">
-        <div className="px-3 py-2 text-sm bg-slate-50 rounded-lg border border-slate-200 truncate">
+        <div
+          className="px-3 py-2 text-sm bg-slate-50 rounded-lg border border-slate-200 truncate"
+          style={{ fontFamily: font.family }}
+        >
           {currentLabel}
         </div>
       </Field>
 
-      <Field label="预设字体（系统已安装）">
+      <Field label="预设字体">
         <select
           className="input"
-          value={FONT_PRESETS.some((p) => p.family === font.family) ? font.family : ''}
-          onChange={(e) => e.target.value && applyFont(e.target.value)}
+          value={selectedPresetId}
+          onChange={async (e) => {
+            const preset = FONT_PRESETS.find((p) => p.id === e.target.value)
+            if (!preset) return
+            setLoading(true)
+            try {
+              updateFont(await applyFontPreset(preset))
+            } finally {
+              setLoading(false)
+            }
+          }}
         >
           <option value="" disabled>
             选择预设…
           </option>
           {FONT_PRESETS.map((p) => (
-            <option key={p.label} value={p.family} style={{ fontFamily: p.family }}>
+            <option key={p.id} value={p.id} style={{ fontFamily: p.family }}>
               {p.label}
             </option>
           ))}
@@ -126,7 +167,7 @@ export function FontPicker() {
 
       {!supportsLocalFonts() && (
         <p className="text-[11px] text-slate-400 leading-relaxed">
-          当前浏览器不支持直接浏览系统字体册。请使用「上传字体文件」，或在下方手动输入已安装的字体名称（如 Hannotate SC、站酷快乐体）。
+          当前浏览器不支持直接浏览系统字体册。请使用「上传字体文件」，或在下方手动输入已安装的字体名称。
         </p>
       )}
 

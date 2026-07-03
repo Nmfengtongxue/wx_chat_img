@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { DoodleMessage, DoodleSettings, DoodleUser } from '../types/doodle'
-import { DEFAULT_FONT_PRESET } from '../utils/fonts'
+import { DEFAULT_FONT_PRESET, fontPresetToSettings } from '../utils/fonts'
 
 const uid = () => crypto.randomUUID()
 
@@ -15,7 +15,7 @@ const defaultSettings: DoodleSettings = {
   timeMinute: '49',
   timeSeparator: ' : ',
   showTopTime: true,
-  font: { family: DEFAULT_FONT_PRESET.family },
+  font: fontPresetToSettings(DEFAULT_FONT_PRESET),
   bubbleColor: '#76D14D',
   canvasWidth: 390,
   avatarSize: 52,

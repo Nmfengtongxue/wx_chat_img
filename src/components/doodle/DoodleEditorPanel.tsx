@@ -353,17 +353,6 @@ export function DoodleEditorPanel() {
                   className="w-full accent-emerald-600"
                 />
               </Field>
-              <Field label={`画布宽度 ${settings.canvasWidth}px`}>
-                <input
-                  type="range"
-                  min={320}
-                  max={480}
-                  step={10}
-                  value={settings.canvasWidth}
-                  onChange={(e) => updateSettings({ canvasWidth: Number(e.target.value) })}
-                  className="w-full accent-emerald-600"
-                />
-              </Field>
               <Field label={`头像尺寸 ${settings.avatarSize}px`}>
                 <input
                   type="range"
@@ -374,6 +363,9 @@ export function DoodleEditorPanel() {
                   className="w-full accent-emerald-600"
                 />
               </Field>
+              <p className="text-[11px] text-slate-400 leading-relaxed">
+                预览画布固定为 iPhone 尺寸（390×844），对话超出高度可在右侧滚动浏览；下载截图会导出完整长图。
+              </p>
             </section>
           </div>
         )}
