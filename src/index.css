@@ -40,6 +40,11 @@
     @apply inline-flex items-center justify-center p-2 rounded-lg
       text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors;
   }
+
+  .screenshot-exporting {
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+  }
 }
 
 /* Custom scrollbar */

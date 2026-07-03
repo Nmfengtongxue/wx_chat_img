@@ -132,6 +132,22 @@ export function bundledFontUrl(path: string): string {
   return `${base}${path.startsWith('/') ? path.slice(1) : path}`
 }
 
+/** 注入 @font-face，确保 html-to-image 在移动端能嵌入字体 */
+export function injectBundledFontFaces() {
+  if (document.getElementById('bundled-font-faces')) return
+  const style = document.createElement('style')
+  style.id = 'bundled-font-faces'
+  style.textContent = `
+@font-face {
+  font-family: '黄油溏心体';
+  src: url('${bundledFontUrl('fonts/huangyou-tangxin.ttf')}') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}`
+  document.head.appendChild(style)
+}
+
 export function fontPresetToSettings(preset: FontPreset) {
   return {
     family: preset.family,

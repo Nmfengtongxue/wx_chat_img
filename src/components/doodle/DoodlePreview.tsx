@@ -96,14 +96,14 @@ export function DoodlePreview({ viewportHeight }: DoodlePreviewProps) {
                         onClick={() => selectMessage(msg.id)}
                       >
                         <AvatarFrame
-                          style={settings.avatarFrameStyle ?? 'sketch'}
+                          style={settings.avatarFrameStyle ?? 'classic'}
                           url={avatar}
                           size={settings.avatarSize}
                           side={side}
                           seed={user?.id ?? side}
                         />
                         <BubbleFrame
-                          style={settings.bubbleFrameStyle ?? 'sketch'}
+                          style={settings.bubbleFrameStyle ?? 'classic'}
                           content={msg.content}
                           side={side}
                           color={settings.bubbleColor}

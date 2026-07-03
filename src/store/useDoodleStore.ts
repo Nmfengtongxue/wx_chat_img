@@ -122,9 +122,22 @@ export const useDoodleStore = create<DoodleStore>()(
     }),
     {
       name: 'doodle-chat-generator',
-      version: 2,
+      version: 3,
       migrate: (persisted: unknown, version) => {
-        if (version >= 2) return persisted as DoodleStore
+        if (version >= 3) return persisted as DoodleStore
+
+        if (version >= 2) {
+          const old = persisted as Partial<DoodleStore>
+          return {
+            ...old,
+            settings: {
+              ...old.settings,
+              avatarFrameStyle: 'classic',
+              bubbleFrameStyle: 'classic',
+            },
+          } as DoodleStore
+        }
+
         const fresh = createDefaultDoodleState()
         const old = persisted as Partial<DoodleStore> | undefined
         return {

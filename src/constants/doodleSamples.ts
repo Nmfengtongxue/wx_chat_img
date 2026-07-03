@@ -32,8 +32,8 @@ export const SLEEP_SAMPLE_SETTINGS: Partial<DoodleSettings> = {
   showTopTime: true,
   font: fontPresetToSettings(DEFAULT_FONT_PRESET),
   bubbleColor: '#76D14D',
-  avatarFrameStyle: 'sketch',
-  bubbleFrameStyle: 'sketch',
+  avatarFrameStyle: 'classic',
+  bubbleFrameStyle: 'classic',
 }
 
 export const SLIPPERS_SAMPLE_SETTINGS: Partial<DoodleSettings> = {
@@ -43,8 +43,8 @@ export const SLIPPERS_SAMPLE_SETTINGS: Partial<DoodleSettings> = {
   showTopTime: true,
   font: fontPresetToSettings(DEFAULT_FONT_PRESET),
   bubbleColor: '#76D14D',
-  avatarFrameStyle: 'sketch',
-  bubbleFrameStyle: 'sketch',
+  avatarFrameStyle: 'classic',
+  bubbleFrameStyle: 'classic',
 }
 
 export type DoodleSampleId = 'sleep' | 'slippers'
@@ -78,8 +78,8 @@ export function createDefaultDoodleState(): {
       canvasWidth: 390,
       avatarSize: 52,
       bubbleFontSize: 17,
-      avatarFrameStyle: sample.settings.avatarFrameStyle ?? 'sketch',
-      bubbleFrameStyle: sample.settings.bubbleFrameStyle ?? 'sketch',
+      avatarFrameStyle: sample.settings.avatarFrameStyle ?? 'classic',
+      bubbleFrameStyle: sample.settings.bubbleFrameStyle ?? 'classic',
     },
     messages: sample.messages,
   }
