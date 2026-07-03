@@ -43,7 +43,9 @@ npm install
 npm run dev
 ```
 
-打开 http://localhost:5173
+本地访问：**http://127.0.0.1:5173/**（Cursor Simple Browser 与外部浏览器均可）
+
+在 Cursor 中：`Cmd+Shift+P` → `Tasks: Run Task` → `启动开发服务器`，再用 Simple Browser 打开上述地址。
 
 在线访问：https://nmfengtongxue.github.io/wx_chat_img/
 

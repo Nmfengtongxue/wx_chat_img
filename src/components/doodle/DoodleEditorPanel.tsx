@@ -173,7 +173,7 @@ export function DoodleEditorPanel() {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div className="flex flex-col h-full min-h-[480px] bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
       <div className="flex border-b border-slate-100">
         {tabs.map(({ id, label, icon: Icon }) => (
           <button
@@ -213,13 +213,13 @@ export function DoodleEditorPanel() {
               </button>
             </div>
 
-            <div className="flex gap-2">
-              <button type="button" onClick={() => loadSample('slippers')} className="text-xs text-emerald-600 hover:underline">
-                示例：拖鞋对话
+            <div className="flex gap-2 flex-wrap">
+              <button type="button" onClick={() => loadSample('sleep')} className="text-xs text-emerald-700 font-medium hover:underline">
+                示例：失眠对话（默认）
               </button>
               <span className="text-slate-300">|</span>
-              <button type="button" onClick={() => loadSample('sleep')} className="text-xs text-emerald-600 hover:underline">
-                示例：失眠对话
+              <button type="button" onClick={() => loadSample('slippers')} className="text-xs text-emerald-600 hover:underline">
+                示例：拖鞋对话
               </button>
             </div>
 
@@ -364,7 +364,7 @@ export function DoodleEditorPanel() {
                 />
               </Field>
               <p className="text-[11px] text-slate-400 leading-relaxed">
-                预览画布固定为 iPhone 尺寸（390×844），对话超出高度可在右侧滚动浏览；下载截图会导出完整长图。
+                预览高度与左侧编辑区对齐；对话较少时截图贴合最后一行，超出时可滚动并导出长图。画布宽度固定 390px。
               </p>
             </section>
           </div>

@@ -12,6 +12,7 @@ import { DoodleEditorPanel } from './components/doodle/DoodleEditorPanel'
 import { DoodlePreview } from './components/doodle/DoodlePreview'
 import { EditorPanel } from './components/editor/EditorPanel'
 import { PhonePreview } from './components/preview/PhonePreview'
+import { usePanelHeight } from './hooks/usePanelHeight'
 import { useChatStore } from './store/useChatStore'
 import { useDoodleStore } from './store/useDoodleStore'
 import { copyScreenshot, exportScreenshot } from './utils/helpers'
@@ -20,8 +21,11 @@ export type AppMode = 'wechat' | 'doodle'
 
 export default function App() {
   const previewWrapRef = useRef<HTMLDivElement>(null)
+  const editorPanelRef = useRef<HTMLElement>(null)
   const [status, setStatus] = useState('')
   const [mode, setMode] = useState<AppMode>('doodle')
+
+  const editorHeight = usePanelHeight(editorPanelRef, mode === 'doodle')
 
   const importWechat = useChatStore((s) => s.importData)
   const resetWechat = useChatStore((s) => s.resetAll)
@@ -38,8 +42,13 @@ export default function App() {
     const el = getTarget()
     if (!el) return
     try {
-      setStatus(mode === 'doodle' ? '正在生成长截图…' : '正在生成截图…')
-      await exportScreenshot(el, { filename: exportName, backgroundColor: exportBg })
+      setStatus('正在生成截图…')
+      await exportScreenshot(el, {
+        filename: exportName,
+        backgroundColor: exportBg,
+        long: true,
+        fitContent: mode === 'doodle',
+      })
       setStatus('截图已下载')
       setTimeout(() => setStatus(''), 2000)
     } catch {
@@ -52,7 +61,7 @@ export default function App() {
     if (!el) return
     try {
       setStatus('正在复制…')
-      await copyScreenshot(el, exportBg)
+      await copyScreenshot(el, exportBg, true, mode === 'doodle')
       setStatus('已复制到剪贴板')
       setTimeout(() => setStatus(''), 2000)
     } catch {
@@ -136,7 +145,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* 模式切换 */}
         <div className="flex px-4 sm:px-6 pb-0 gap-1">
           <ModeTab
             active={mode === 'doodle'}
@@ -153,18 +161,25 @@ export default function App() {
         </div>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-6 p-4 sm:p-6 max-w-[1400px] mx-auto w-full">
-        <section className="lg:w-[420px] xl:w-[460px] shrink-0 lg:sticky lg:top-[108px] lg:self-start lg:max-h-[calc(100vh-128px)]">
-          {mode === 'wechat' ? <EditorPanel /> : <DoodleEditorPanel />}
+      <main className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-6 p-4 sm:p-6 max-w-[1400px] mx-auto w-full lg:items-stretch">
+        <section
+          ref={editorPanelRef}
+          className="lg:w-[420px] xl:w-[460px] shrink-0 flex flex-col min-h-[480px] lg:min-h-0 lg:max-h-[calc(100vh-128px)]"
+        >
+          <div className="flex-1 min-h-0 flex flex-col">
+            {mode === 'wechat' ? <EditorPanel /> : <DoodleEditorPanel />}
+          </div>
         </section>
 
         <section
           ref={previewWrapRef}
-          className="flex-1 flex items-start justify-center min-h-[600px] py-4 lg:py-8"
+          className="flex-1 flex flex-col items-center justify-start min-h-[480px] lg:min-h-0"
         >
-          <div>
-            {mode === 'wechat' ? <PhonePreview /> : <DoodlePreview />}
-          </div>
+          {mode === 'wechat' ? (
+            <PhonePreview />
+          ) : (
+            <DoodlePreview viewportHeight={editorHeight} />
+          )}
         </section>
       </main>
 

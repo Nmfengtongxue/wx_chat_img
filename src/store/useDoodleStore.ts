@@ -1,7 +1,12 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import {
+  applySample,
+  createDefaultDoodleState,
+  type DoodleSampleId,
+} from '../constants/doodleSamples'
 import type { DoodleMessage, DoodleSettings, DoodleUser } from '../types/doodle'
-import { DEFAULT_FONT_PRESET, fontPresetToSettings } from '../utils/fonts'
+import type { DoodleFont } from '../types/doodle'
 
 const uid = () => crypto.randomUUID()
 
@@ -10,27 +15,7 @@ const defaultUsers: DoodleUser[] = [
   { id: 'right', side: 'right', name: '我', avatar: '' },
 ]
 
-const defaultSettings: DoodleSettings = {
-  timeHour: '12',
-  timeMinute: '49',
-  timeSeparator: ' : ',
-  showTopTime: true,
-  font: fontPresetToSettings(DEFAULT_FONT_PRESET),
-  bubbleColor: '#76D14D',
-  canvasWidth: 390,
-  avatarSize: 52,
-  bubbleFontSize: 17,
-  avatarFrameStyle: 'classic',
-  bubbleFrameStyle: 'classic',
-}
-
-const defaultMessages: DoodleMessage[] = [
-  { id: uid(), userId: 'left', content: '看我的新拖鞋！' },
-  { id: uid(), userId: 'right', content: '你不是已经有两双了吗？怎么还买？' },
-  { id: uid(), userId: 'left', content: '没办法！已经砸你四次了。' },
-  { id: uid(), userId: 'right', content: '你真以为我会怕37码的EVA人字拖？' },
-  { id: uid(), userId: 'left', content: '我知道你不怕！所以我买了38码的。' },
-]
+const { settings: defaultSettings, messages: defaultMessages } = createDefaultDoodleState()
 
 interface DoodleStore {
   users: DoodleUser[]
@@ -40,7 +25,7 @@ interface DoodleStore {
   activeTab: 'messages' | 'style' | 'avatars'
   setActiveTab: (tab: 'messages' | 'style' | 'avatars') => void
   updateSettings: (patch: Partial<DoodleSettings>) => void
-  updateFont: (font: DoodleSettings['font']) => void
+  updateFont: (font: DoodleFont) => void
   updateUser: (id: string, patch: Partial<DoodleUser>) => void
   addMessage: (userId?: string) => void
   updateMessage: (id: string, patch: Partial<DoodleMessage>) => void
@@ -50,7 +35,7 @@ interface DoodleStore {
   selectMessage: (id: string | null) => void
   importData: (data: Partial<DoodleStore>) => void
   resetAll: () => void
-  loadSample: (sample: 'slippers' | 'sleep') => void
+  loadSample: (sample: DoodleSampleId) => void
 }
 
 export const useDoodleStore = create<DoodleStore>()(
@@ -116,38 +101,40 @@ export const useDoodleStore = create<DoodleStore>()(
           messages: data.messages ?? s.messages,
         })),
 
-      resetAll: () =>
+      resetAll: () => {
+        const fresh = createDefaultDoodleState()
         set({
           users: defaultUsers,
-          settings: defaultSettings,
-          messages: defaultMessages.map((m) => ({ ...m, id: uid() })),
+          settings: fresh.settings,
+          messages: fresh.messages.map((m) => ({ ...m, id: uid() })),
           selectedMessageId: null,
-        }),
+        })
+      },
 
       loadSample: (sample) => {
-        if (sample === 'slippers') {
-          set({
-            settings: { ...defaultSettings, timeHour: '12', timeMinute: '49', timeSeparator: ' : ' },
-            messages: defaultMessages.map((m) => ({ ...m, id: uid() })),
-          })
-        } else {
-          set({
-            settings: { ...defaultSettings, timeHour: '04', timeMinute: '47', timeSeparator: ':' },
-            messages: [
-              { id: uid(), userId: 'left', content: '我又没睡着！' },
-              { id: uid(), userId: 'right', content: '碰上容易的觉就睡了吧。' },
-              { id: uid(), userId: 'right', content: '那些想不明白的问题，' },
-              { id: uid(), userId: 'right', content: '可以等大姨妈、智齿发炎、感冒、过敏，' },
-              { id: uid(), userId: 'right', content: '来问候你的时候，' },
-              { id: uid(), userId: 'right', content: '跟它们一块儿彻夜长谈。' },
-              { id: uid(), userId: 'left', content: '它们懂个屁！' },
-            ],
-          })
-        }
+        const data = applySample(sample)
+        set((s) => ({
+          settings: { ...s.settings, ...data.settings },
+          messages: data.messages,
+          selectedMessageId: null,
+        }))
       },
     }),
     {
       name: 'doodle-chat-generator',
+      version: 2,
+      migrate: (persisted: unknown, version) => {
+        if (version >= 2) return persisted as DoodleStore
+        const fresh = createDefaultDoodleState()
+        const old = persisted as Partial<DoodleStore> | undefined
+        return {
+          users: old?.users ?? defaultUsers,
+          settings: { ...fresh.settings, ...old?.settings, ...fresh.settings },
+          messages: fresh.messages,
+          selectedMessageId: null,
+          activeTab: 'messages',
+        }
+      },
       partialize: (s) => ({
         users: s.users,
         settings: s.settings,

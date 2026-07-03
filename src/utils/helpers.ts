@@ -5,19 +5,30 @@ interface ScreenshotOptions {
   backgroundColor?: string
   /** 长截图：按元素完整 scroll 尺寸导出 */
   long?: boolean
+  /** 贴合内容高度，不保留空白底（短对话时裁到最后一条） */
+  fitContent?: boolean
 }
 
-function captureOptions(element: HTMLElement, backgroundColor: string, long: boolean) {
+function captureOptions(
+  element: HTMLElement,
+  backgroundColor: string,
+  long: boolean,
+  fitContent: boolean,
+) {
   const base = {
     pixelRatio: 3,
     cacheBust: true,
     backgroundColor,
   }
   if (!long) return base
+
+  const width = element.scrollWidth
+  const height = fitContent ? element.scrollHeight : element.scrollHeight
+
   return {
     ...base,
-    width: element.scrollWidth,
-    height: element.scrollHeight,
+    width,
+    height,
   }
 }
 
@@ -27,7 +38,11 @@ export async function exportScreenshot(
 ) {
   const opts = typeof options === 'string' ? { filename: options } : options
   const long = opts.long ?? true
-  const dataUrl = await toPng(element, captureOptions(element, opts.backgroundColor ?? '#000', long))
+  const fitContent = opts.fitContent ?? true
+  const dataUrl = await toPng(
+    element,
+    captureOptions(element, opts.backgroundColor ?? '#000', long, fitContent),
+  )
 
   const link = document.createElement('a')
   link.download = opts.filename ?? '微信聊天截图.png'
@@ -39,8 +54,12 @@ export async function copyScreenshot(
   element: HTMLElement,
   backgroundColor = '#000',
   long = true,
+  fitContent = true,
 ) {
-  const dataUrl = await toPng(element, captureOptions(element, backgroundColor, long))
+  const dataUrl = await toPng(
+    element,
+    captureOptions(element, backgroundColor, long, fitContent),
+  )
 
   const res = await fetch(dataUrl)
   const blob = await res.blob()
