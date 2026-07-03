@@ -24,6 +24,7 @@ export function DoodlePreview() {
   return (
     <div className="flex flex-col items-center">
       <div
+        data-screenshot-target
         className="bg-white shadow-lg"
         style={{
           width: settings.canvasWidth,

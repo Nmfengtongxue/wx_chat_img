@@ -16,7 +16,7 @@ export function PhonePreview() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-[375px] bg-black rounded-[44px] p-[10px] shadow-2xl shadow-black/30">
+      <div data-screenshot-target className="w-[375px] bg-black rounded-[44px] p-[10px] shadow-2xl shadow-black/30">
         <div className="relative bg-[#ededed] rounded-[36px] overflow-hidden min-h-[720px] flex flex-col">
           {/* Dynamic Island */}
           <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[120px] h-[34px] bg-black rounded-full z-20 pointer-events-none" />

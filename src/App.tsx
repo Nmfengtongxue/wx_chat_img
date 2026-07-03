@@ -162,7 +162,7 @@ export default function App() {
           ref={previewWrapRef}
           className="flex-1 flex items-start justify-center min-h-[600px] py-4 lg:py-8"
         >
-          <div data-screenshot-target>
+          <div>
             {mode === 'wechat' ? <PhonePreview /> : <DoodlePreview />}
           </div>
         </section>
