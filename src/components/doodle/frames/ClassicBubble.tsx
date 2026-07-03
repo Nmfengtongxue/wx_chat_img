@@ -22,7 +22,6 @@ export function ClassicBubble({
           fontSize: `${fontSize}px`,
           border: '2.5px solid #000',
           borderRadius: side === 'left' ? '22px 20px 20px 18px' : '20px 22px 18px 20px',
-          boxShadow: '1px 1.5px 0 rgba(0,0,0,0.15)',
         }}
       >
         {content}

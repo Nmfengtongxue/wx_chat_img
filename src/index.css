@@ -44,6 +44,15 @@
   .screenshot-exporting {
     --tw-ring-shadow: 0 0 #0000 !important;
     --tw-ring-offset-shadow: 0 0 #0000 !important;
+    box-shadow: none !important;
+  }
+
+  [data-screenshot-target].screenshot-exporting,
+  [data-screenshot-target].screenshot-exporting * {
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    outline: none !important;
   }
 
   .avatar-pat-bounce {

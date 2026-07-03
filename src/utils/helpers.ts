@@ -103,25 +103,19 @@ function unlockOverflowChain(el: HTMLElement): RestoreFn {
   }
 }
 
-/** 隐藏选中高亮，避免导出图出现绿色选框 */
-function hideSelectionChrome(root: HTMLElement): RestoreFn {
+/** 导出前清理阴影/选框，避免 html-to-image 出现矩形灰块 */
+function prepareScreenshotStyles(root: HTMLElement): RestoreFn {
+  root.classList.add('screenshot-exporting')
+
   const marked: HTMLElement[] = []
   root.querySelectorAll<HTMLElement>('[class*="ring-emerald"]').forEach((el) => {
-    el.dataset.screenshotPrevOutline = el.style.outline
-    el.dataset.screenshotPrevBoxShadow = el.style.boxShadow
-    el.style.outline = 'none'
-    el.style.boxShadow = 'none'
     el.classList.add('screenshot-exporting')
     marked.push(el)
   })
+
   return () => {
-    marked.forEach((el) => {
-      el.style.outline = el.dataset.screenshotPrevOutline ?? ''
-      el.style.boxShadow = el.dataset.screenshotPrevBoxShadow ?? ''
-      delete el.dataset.screenshotPrevOutline
-      delete el.dataset.screenshotPrevBoxShadow
-      el.classList.remove('screenshot-exporting')
-    })
+    root.classList.remove('screenshot-exporting')
+    marked.forEach((el) => el.classList.remove('screenshot-exporting'))
   }
 }
 
@@ -156,7 +150,7 @@ export async function captureElementToPng(
 
   const restoreScroll = resetScrollChain(element)
   const restoreOverflow = unlockOverflowChain(element)
-  const restoreSelection = hideSelectionChrome(element)
+  const restoreStyles = prepareScreenshotStyles(element)
 
   try {
     await waitForStableLayout(element)
@@ -186,7 +180,7 @@ export async function captureElementToPng(
       skipFonts: false,
     })
   } finally {
-    restoreSelection()
+    restoreStyles()
     restoreOverflow()
     restoreScroll()
   }

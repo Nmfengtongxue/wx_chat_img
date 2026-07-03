@@ -12,7 +12,7 @@ import { DoodleEditorPanel } from './components/doodle/DoodleEditorPanel'
 import { DoodlePreview } from './components/doodle/DoodlePreview'
 import { EditorPanel } from './components/editor/EditorPanel'
 import { PhonePreview } from './components/preview/PhonePreview'
-import { usePanelHeight } from './hooks/usePanelHeight'
+import { usePreviewViewportHeight } from './hooks/usePreviewViewportHeight'
 import { useChatStore } from './store/useChatStore'
 import { useDoodleStore } from './store/useDoodleStore'
 import { copyScreenshot, exportScreenshot } from './utils/helpers'
@@ -25,7 +25,7 @@ export default function App() {
   const [status, setStatus] = useState('')
   const [mode, setMode] = useState<AppMode>('doodle')
 
-  const editorHeight = usePanelHeight(editorPanelRef, mode === 'doodle')
+  const previewHeight = usePreviewViewportHeight(editorPanelRef, mode === 'doodle')
 
   const importWechat = useChatStore((s) => s.importData)
   const resetWechat = useChatStore((s) => s.resetAll)
@@ -118,7 +118,10 @@ export default function App() {
             <h1 className="text-base sm:text-lg font-bold text-slate-900 truncate">
               {mode === 'wechat' ? '微信对话生成器' : '手绘对话生成器'}
             </h1>
-            <p className="text-[11px] sm:text-xs text-slate-400 hidden sm:block">
+            <p className="text-[11px] sm:text-xs text-slate-400 lg:hidden">
+              上方预览 · 下方编辑 · 数据保存在本地
+            </p>
+            <p className="text-[11px] sm:text-xs text-slate-400 hidden lg:block">
               左侧编辑 · 右侧实时预览 · 数据保存在本地
             </p>
           </div>
@@ -163,23 +166,23 @@ export default function App() {
 
       <main className="flex-1 flex flex-col lg:flex-row gap-4 lg:gap-6 p-4 sm:p-6 max-w-[1400px] mx-auto w-full lg:items-stretch">
         <section
-          ref={editorPanelRef}
-          className="lg:w-[420px] xl:w-[460px] shrink-0 flex flex-col min-h-[480px] lg:min-h-0 lg:max-h-[calc(100vh-128px)]"
-        >
-          <div className="flex-1 min-h-0 flex flex-col">
-            {mode === 'wechat' ? <EditorPanel /> : <DoodleEditorPanel />}
-          </div>
-        </section>
-
-        <section
           ref={previewWrapRef}
-          className="flex-1 flex flex-col items-center justify-start min-h-[480px] lg:min-h-0"
+          className="order-1 lg:order-2 flex-1 flex flex-col items-center justify-start shrink-0 lg:min-h-0"
         >
           {mode === 'wechat' ? (
             <PhonePreview />
           ) : (
-            <DoodlePreview viewportHeight={editorHeight} />
+            <DoodlePreview viewportHeight={previewHeight} />
           )}
+        </section>
+
+        <section
+          ref={editorPanelRef}
+          className="order-2 lg:order-1 lg:w-[420px] xl:w-[460px] shrink-0 flex flex-col min-h-0 lg:max-h-[calc(100vh-128px)]"
+        >
+          <div className="flex-1 min-h-0 flex flex-col">
+            {mode === 'wechat' ? <EditorPanel /> : <DoodleEditorPanel />}
+          </div>
         </section>
       </main>
 
