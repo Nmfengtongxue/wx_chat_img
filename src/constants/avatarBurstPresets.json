@@ -1,0 +1,1851 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(180, 200, 255, 0.24)",
+      "accentColors": [
+        "#5c6bc0",
+        "#7986cb",
+        "#fff8e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "📚",
+        "✏",
+        "💡"
+      ],
+      "maxParticles": 100,
+      "spawnRate": 11,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.18,
+      "id": "好学-学霸小鲨鱼",
+      "filename": "好学-学霸小鲨鱼.jpg",
+      "name": "好学-学霸小鲨鱼",
+      "category": "05-知性文艺",
+      "emotion": "好学 · 学霸小鲨鱼",
+      "avatarSrc": "avatar-effects/好学-学霸小鲨鱼.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(160, 160, 160, 0.28)",
+      "accentColors": [
+        "#bdbdbd",
+        "#9e9e9e",
+        "#757575",
+        "#eceff1"
+      ],
+      "emojiPool": [
+        "🫠",
+        "💤",
+        "zzz"
+      ],
+      "maxParticles": 88,
+      "spawnRate": 8,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.08,
+      "id": "摆烂-躺平青蛙",
+      "filename": "摆烂-躺平青蛙.jpg",
+      "name": "摆烂-躺平青蛙",
+      "category": "01-慵懒佛系",
+      "emotion": "摆烂 · 躺平青蛙",
+      "avatarSrc": "avatar-effects/摆烂-躺平青蛙.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🤖",
+        "▣",
+        "·"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 10,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "安静-蓝白小机器人",
+      "filename": "安静-蓝白小机器人.jpg",
+      "name": "安静-蓝白小机器人",
+      "category": "09-机械科技",
+      "emotion": "安静 · 蓝白小机器人",
+      "avatarSrc": "avatar-effects/安静-蓝白小机器人.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(30, 30, 40, 0.32)",
+      "accentColors": [
+        "#1a1a2e",
+        "#4a4a6a",
+        "#c0c0c0",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "✨",
+        "🌹",
+        "♡"
+      ],
+      "maxParticles": 95,
+      "spawnRate": 11,
+      "avatarWeight": 0.38,
+      "bgPulse": 0.12,
+      "id": "优雅-蕾丝帽橘猫",
+      "filename": "优雅-蕾丝帽橘猫.jpg",
+      "name": "优雅-蕾丝帽橘猫",
+      "category": "04-高冷酷飒",
+      "emotion": "优雅 · 蕾丝帽橘猫",
+      "avatarSrc": "avatar-effects/优雅-蕾丝帽橘猫.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(180, 200, 255, 0.24)",
+      "accentColors": [
+        "#5c6bc0",
+        "#7986cb",
+        "#fff8e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🔍",
+        "🕵",
+        "💡"
+      ],
+      "maxParticles": 100,
+      "spawnRate": 11,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.18,
+      "id": "推理-烟斗侦探猫",
+      "filename": "推理-烟斗侦探猫.jpg",
+      "name": "推理-烟斗侦探猫",
+      "category": "05-知性文艺",
+      "emotion": "推理 · 烟斗侦探猫",
+      "avatarSrc": "avatar-effects/推理-烟斗侦探猫.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "💗",
+        "🫧",
+        "🐟",
+        "✨"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 13,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.12,
+      "id": "害羞-腮红小鲨鱼",
+      "filename": "害羞-腮红小鲨鱼.jpg",
+      "name": "害羞-腮红小鲨鱼",
+      "category": "02-呆萌治愈",
+      "emotion": "害羞 · 腮红小鲨鱼",
+      "avatarSrc": "avatar-effects/害羞-腮红小鲨鱼.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(100, 140, 200, 0.3)",
+      "accentColors": [
+        "#5c7cfa",
+        "#748ffc",
+        "#adb5bd",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🥺",
+        "💧",
+        "…"
+      ],
+      "maxParticles": 92,
+      "spawnRate": 10,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.08,
+      "id": "委屈-撒娇小猫",
+      "filename": "委屈-撒娇小猫.jpg",
+      "name": "委屈-撒娇小猫",
+      "category": "08-忧郁敏感",
+      "emotion": "委屈 · 撒娇小猫",
+      "avatarSrc": "avatar-effects/委屈-撒娇小猫.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🌙",
+        "✦",
+        "👁"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.15,
+      "id": "神秘-靶眼蒙面猫",
+      "filename": "神秘-靶眼蒙面猫.jpg",
+      "name": "神秘-靶眼蒙面猫",
+      "category": "03-搞怪抽象",
+      "emotion": "神秘 · 靶眼蒙面猫",
+      "avatarSrc": "avatar-effects/神秘-靶眼蒙面猫.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🌙",
+        "✦",
+        "👁"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.15,
+      "id": "神秘-靶眼蒙面猫-副本",
+      "filename": "神秘-靶眼蒙面猫-副本.jpg",
+      "name": "神秘-靶眼蒙面猫-副本",
+      "category": "03-搞怪抽象",
+      "emotion": "神秘 · 靶眼蒙面猫 · 副本",
+      "avatarSrc": "avatar-effects/神秘-靶眼蒙面猫-副本.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(30, 30, 40, 0.32)",
+      "accentColors": [
+        "#1a1a2e",
+        "#4a4a6a",
+        "#c0c0c0",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🖤",
+        "😎",
+        "✦"
+      ],
+      "maxParticles": 95,
+      "spawnRate": 11,
+      "avatarWeight": 0.38,
+      "bgPulse": 0.14,
+      "id": "酷飒-墨镜烟斗猫",
+      "filename": "酷飒-墨镜烟斗猫.jpg",
+      "name": "酷飒-墨镜烟斗猫",
+      "category": "04-高冷酷飒",
+      "emotion": "酷飒 · 墨镜烟斗猫",
+      "avatarSrc": "avatar-effects/酷飒-墨镜烟斗猫.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🤣",
+        "🎉",
+        "!!!"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 20,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.4,
+      "id": "狂喜-摇头潦草小狗",
+      "filename": "狂喜-摇头潦草小狗.jpg",
+      "name": "狂喜-摇头潦草小狗",
+      "category": "06-活泼沙雕",
+      "emotion": "狂喜 · 摇头潦草小狗",
+      "avatarSrc": "avatar-effects/狂喜-摇头潦草小狗.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(180, 200, 255, 0.24)",
+      "accentColors": [
+        "#5c6bc0",
+        "#7986cb",
+        "#fff8e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "❓",
+        "👀",
+        "✨"
+      ],
+      "maxParticles": 100,
+      "spawnRate": 12,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.18,
+      "id": "好奇-仰望蓝鱼男孩",
+      "filename": "好奇-仰望蓝鱼男孩.jpg",
+      "name": "好奇-仰望蓝鱼男孩",
+      "category": "05-知性文艺",
+      "emotion": "好奇 · 仰望蓝鱼男孩",
+      "avatarSrc": "avatar-effects/好奇-仰望蓝鱼男孩.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "❓",
+        "🌀",
+        "…"
+      ],
+      "textPool": [
+        "?",
+        "??",
+        "啊?"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.48,
+      "id": "懵圈-叼花潦草猪",
+      "filename": "懵圈-叼花潦草猪.jpg",
+      "name": "懵圈-叼花潦草猪",
+      "category": "03-搞怪抽象",
+      "emotion": "懵圈 · 叼花潦草猪",
+      "avatarSrc": "avatar-effects/懵圈-叼花潦草猪.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😱",
+        "💥"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "啊",
+        "…"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.5,
+      "id": "崩溃-炸毛潦草鸟",
+      "filename": "崩溃-炸毛潦草鸟.jpg",
+      "name": "崩溃-炸毛潦草鸟",
+      "category": "03-搞怪抽象",
+      "emotion": "崩溃 · 炸毛潦草鸟",
+      "avatarSrc": "avatar-effects/崩溃-炸毛潦草鸟.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "💢",
+        "😤"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.45,
+      "id": "抓狂-凌乱潦草鸭",
+      "filename": "抓狂-凌乱潦草鸭.jpg",
+      "name": "抓狂-凌乱潦草鸭",
+      "category": "03-搞怪抽象",
+      "emotion": "抓狂 · 凌乱潦草鸭",
+      "avatarSrc": "avatar-effects/抓狂-凌乱潦草鸭.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😱",
+        "💥",
+        "❓",
+        "🌀"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.48,
+      "id": "呆滞-龅牙潦草兽",
+      "filename": "呆滞-龅牙潦草兽.jpg",
+      "name": "呆滞-龅牙潦草兽",
+      "category": "03-搞怪抽象",
+      "emotion": "呆滞 · 龅牙潦草兽",
+      "avatarSrc": "avatar-effects/呆滞-龅牙潦草兽.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "❓",
+        "👀",
+        "✨"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 12,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.14,
+      "id": "好奇-腮红潦草象",
+      "filename": "好奇-腮红潦草象.jpg",
+      "name": "好奇-腮红潦草象",
+      "category": "02-呆萌治愈",
+      "emotion": "好奇 · 腮红潦草象",
+      "avatarSrc": "avatar-effects/好奇-腮红潦草象.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "❓",
+        "🌀",
+        "…"
+      ],
+      "textPool": [
+        "?",
+        "??",
+        "啊?"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.48,
+      "id": "懵圈-长脖潦草鹅",
+      "filename": "懵圈-长脖潦草鹅.jpg",
+      "name": "懵圈-长脖潦草鹅",
+      "category": "03-搞怪抽象",
+      "emotion": "懵圈 · 长脖潦草鹅",
+      "avatarSrc": "avatar-effects/懵圈-长脖潦草鹅.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😰",
+        "💦"
+      ],
+      "textPool": [
+        "!",
+        "…"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.35,
+      "id": "紧张-潦草小鼠",
+      "filename": "紧张-潦草小鼠.jpg",
+      "name": "紧张-潦草小鼠",
+      "category": "03-搞怪抽象",
+      "emotion": "紧张 · 潦草小鼠",
+      "avatarSrc": "avatar-effects/紧张-潦草小鼠.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🥺",
+        "✨",
+        "💫"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.12,
+      "id": "呆萌-潦草熊猫",
+      "filename": "呆萌-潦草熊猫.jpg",
+      "name": "呆萌-潦草熊猫",
+      "category": "03-搞怪抽象",
+      "emotion": "呆萌 · 潦草熊猫",
+      "avatarSrc": "avatar-effects/呆萌-潦草熊猫.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(120, 40, 160, 0.26)",
+      "accentColors": [
+        "#7b1fa2",
+        "#9c27b0",
+        "#ff4081",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😈",
+        "💜",
+        "✨"
+      ],
+      "maxParticles": 110,
+      "spawnRate": 15,
+      "avatarWeight": 0.43,
+      "bgPulse": 0.28,
+      "id": "邪萌-塑料袋鳄鱼",
+      "filename": "邪萌-塑料袋鳄鱼.jpg",
+      "name": "邪萌-塑料袋鳄鱼",
+      "category": "10-邪萌腹黑",
+      "emotion": "邪萌 · 塑料袋鳄鱼",
+      "avatarSrc": "avatar-effects/邪萌-塑料袋鳄鱼.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(120, 40, 160, 0.26)",
+      "accentColors": [
+        "#7b1fa2",
+        "#9c27b0",
+        "#ff4081",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😈",
+        "💜",
+        "✨"
+      ],
+      "maxParticles": 110,
+      "spawnRate": 15,
+      "avatarWeight": 0.43,
+      "bgPulse": 0.28,
+      "id": "邪萌-头套海狸",
+      "filename": "邪萌-头套海狸.jpg",
+      "name": "邪萌-头套海狸",
+      "category": "10-邪萌腹黑",
+      "emotion": "邪萌 · 头套海狸",
+      "avatarSrc": "avatar-effects/邪萌-头套海狸.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(120, 40, 160, 0.26)",
+      "accentColors": [
+        "#7b1fa2",
+        "#9c27b0",
+        "#ff4081",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😈",
+        "💜",
+        "✨"
+      ],
+      "maxParticles": 110,
+      "spawnRate": 15,
+      "avatarWeight": 0.43,
+      "bgPulse": 0.28,
+      "id": "邪萌-头套河马",
+      "filename": "邪萌-头套河马.jpg",
+      "name": "邪萌-头套河马",
+      "category": "10-邪萌腹黑",
+      "emotion": "邪萌 · 头套河马",
+      "avatarSrc": "avatar-effects/邪萌-头套河马.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "✏",
+        "📋",
+        "✓"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 10,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "认真-机甲皮卡丘",
+      "filename": "认真-机甲皮卡丘.jpg",
+      "name": "认真-机甲皮卡丘",
+      "category": "09-机械科技",
+      "emotion": "认真 · 机甲皮卡丘",
+      "avatarSrc": "avatar-effects/认真-机甲皮卡丘.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😄",
+        "✨",
+        "🎉"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 16,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "开心-笑脸潦草驴",
+      "filename": "开心-笑脸潦草驴.jpg",
+      "name": "开心-笑脸潦草驴",
+      "category": "06-活泼沙雕",
+      "emotion": "开心 · 笑脸潦草驴",
+      "avatarSrc": "avatar-effects/开心-笑脸潦草驴.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(180, 200, 255, 0.24)",
+      "accentColors": [
+        "#5c6bc0",
+        "#7986cb",
+        "#fff8e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🌸",
+        "💗",
+        "✨"
+      ],
+      "maxParticles": 100,
+      "spawnRate": 12,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.1,
+      "id": "温柔-眼镜小鱼",
+      "filename": "温柔-眼镜小鱼.jpg",
+      "name": "温柔-眼镜小鱼",
+      "category": "05-知性文艺",
+      "emotion": "温柔 · 眼镜小鱼",
+      "avatarSrc": "avatar-effects/温柔-眼镜小鱼.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😲",
+        "✨"
+      ],
+      "textPool": [
+        "!",
+        "?!",
+        "哇"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.48,
+      "id": "惊讶-潦草金鱼",
+      "filename": "惊讶-潦草金鱼.jpg",
+      "name": "惊讶-潦草金鱼",
+      "category": "03-搞怪抽象",
+      "emotion": "惊讶 · 潦草金鱼",
+      "avatarSrc": "avatar-effects/惊讶-潦草金鱼.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "💗",
+        "🫧",
+        "✨",
+        "🌸"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 13,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.14,
+      "id": "友好-发光小白机器人",
+      "filename": "友好-发光小白机器人.png",
+      "name": "友好-发光小白机器人",
+      "category": "02-呆萌治愈",
+      "emotion": "友好 · 发光小白机器人",
+      "avatarSrc": "avatar-effects/友好-发光小白机器人.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 40, 20, 0.35)",
+      "accentColors": [
+        "#d32f2f",
+        "#ff5722",
+        "#ffeb3b",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "💢",
+        "🔥",
+        "💥"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "哼"
+      ],
+      "maxParticles": 125,
+      "spawnRate": 22,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.58,
+      "id": "暴怒-杰瑞鼠",
+      "filename": "暴怒-杰瑞鼠.jpg",
+      "name": "暴怒-杰瑞鼠",
+      "category": "07-暴躁硬核",
+      "emotion": "暴怒 · 杰瑞鼠",
+      "avatarSrc": "avatar-effects/暴怒-杰瑞鼠.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😄",
+        "✨",
+        "🎉"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 16,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "开心-史努比",
+      "filename": "开心-史努比.jpg",
+      "name": "开心-史努比",
+      "category": "06-活泼沙雕",
+      "emotion": "开心 · 史努比",
+      "avatarSrc": "avatar-effects/开心-史努比.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🎉",
+        "🎊",
+        "✨"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 18,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "嗨皮-啤酒科米蛙",
+      "filename": "嗨皮-啤酒科米蛙.jpg",
+      "name": "嗨皮-啤酒科米蛙",
+      "category": "06-活泼沙雕",
+      "emotion": "嗨皮 · 啤酒科米蛙",
+      "avatarSrc": "avatar-effects/嗨皮-啤酒科米蛙.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(160, 160, 160, 0.28)",
+      "accentColors": [
+        "#bdbdbd",
+        "#9e9e9e",
+        "#757575",
+        "#eceff1"
+      ],
+      "emojiPool": [
+        "🫠",
+        "💤",
+        "zzz"
+      ],
+      "maxParticles": 88,
+      "spawnRate": 7,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.08,
+      "id": "躺平-爱心墨镜狗",
+      "filename": "躺平-爱心墨镜狗.jpg",
+      "name": "躺平-爱心墨镜狗",
+      "category": "01-慵懒佛系",
+      "emotion": "躺平 · 爱心墨镜狗",
+      "avatarSrc": "avatar-effects/躺平-爱心墨镜狗.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "♪",
+        "♫",
+        "🎵",
+        "🎧"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 19,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "嗨唱-耳机白狗",
+      "filename": "嗨唱-耳机白狗.jpg",
+      "name": "嗨唱-耳机白狗",
+      "category": "06-活泼沙雕",
+      "emotion": "嗨唱 · 耳机白狗",
+      "avatarSrc": "avatar-effects/嗨唱-耳机白狗.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(120, 40, 160, 0.26)",
+      "accentColors": [
+        "#7b1fa2",
+        "#9c27b0",
+        "#ff4081",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😈",
+        "👀",
+        "✨",
+        "♠"
+      ],
+      "maxParticles": 110,
+      "spawnRate": 15,
+      "avatarWeight": 0.43,
+      "bgPulse": 0.28,
+      "id": "双面-海绵宝宝影子",
+      "filename": "双面-海绵宝宝影子.jpg",
+      "name": "双面-海绵宝宝影子",
+      "category": "10-邪萌腹黑",
+      "emotion": "双面 · 海绵宝宝影子",
+      "avatarSrc": "avatar-effects/双面-海绵宝宝影子.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(160, 160, 160, 0.28)",
+      "accentColors": [
+        "#bdbdbd",
+        "#9e9e9e",
+        "#757575",
+        "#eceff1"
+      ],
+      "emojiPool": [
+        "😱",
+        "💥"
+      ],
+      "maxParticles": 88,
+      "spawnRate": 9,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.5,
+      "textPool": [
+        "!",
+        "!!",
+        "啊",
+        "…"
+      ],
+      "id": "崩溃-乱掏口袋哆啦A梦",
+      "filename": "崩溃-乱掏口袋哆啦A梦.jpg",
+      "name": "崩溃-乱掏口袋哆啦A梦",
+      "category": "01-慵懒佛系",
+      "emotion": "崩溃 · 乱掏口袋哆啦A梦",
+      "avatarSrc": "avatar-effects/崩溃-乱掏口袋哆啦A梦.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🚀",
+        "⭐",
+        "✨"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 17,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "冒险-草帽路飞",
+      "filename": "冒险-草帽路飞.jpg",
+      "name": "冒险-草帽路飞",
+      "category": "06-活泼沙雕",
+      "emotion": "冒险 · 草帽路飞",
+      "avatarSrc": "avatar-effects/冒险-草帽路飞.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(160, 160, 160, 0.28)",
+      "accentColors": [
+        "#bdbdbd",
+        "#9e9e9e",
+        "#757575",
+        "#eceff1"
+      ],
+      "emojiPool": [
+        "😑",
+        "…",
+        "zzz"
+      ],
+      "maxParticles": 88,
+      "spawnRate": 7,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.08,
+      "id": "无聊-长草黑白猫",
+      "filename": "无聊-长草黑白猫.jpg",
+      "name": "无聊-长草黑白猫",
+      "category": "01-慵懒佛系",
+      "emotion": "无聊 · 长草黑白猫",
+      "avatarSrc": "avatar-effects/无聊-长草黑白猫.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "⚡",
+        "▣",
+        "!!"
+      ],
+      "textPool": [
+        "!",
+        "!!"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.35,
+      "id": "过载-闪电潦草云",
+      "filename": "过载-闪电潦草云.jpg",
+      "name": "过载-闪电潦草云",
+      "category": "03-搞怪抽象",
+      "emotion": "过载 · 闪电潦草云",
+      "avatarSrc": "avatar-effects/过载-闪电潦草云.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(160, 160, 160, 0.28)",
+      "accentColors": [
+        "#bdbdbd",
+        "#9e9e9e",
+        "#757575",
+        "#eceff1"
+      ],
+      "emojiPool": [
+        "😮‍💨",
+        "💤",
+        "zzz"
+      ],
+      "maxParticles": 88,
+      "spawnRate": 8,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.08,
+      "id": "疲惫-纸箱国王",
+      "filename": "疲惫-纸箱国王.jpg",
+      "name": "疲惫-纸箱国王",
+      "category": "01-慵懒佛系",
+      "emotion": "疲惫 · 纸箱国王",
+      "avatarSrc": "avatar-effects/疲惫-纸箱国王.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(120, 40, 160, 0.26)",
+      "accentColors": [
+        "#7b1fa2",
+        "#9c27b0",
+        "#ff4081",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😈",
+        "👀",
+        "✨"
+      ],
+      "maxParticles": 110,
+      "spawnRate": 15,
+      "avatarWeight": 0.43,
+      "bgPulse": 0.3,
+      "id": "邪笑-剪刀小鲨鱼",
+      "filename": "邪笑-剪刀小鲨鱼.jpg",
+      "name": "邪笑-剪刀小鲨鱼",
+      "category": "10-邪萌腹黑",
+      "emotion": "邪笑 · 剪刀小鲨鱼",
+      "avatarSrc": "avatar-effects/邪笑-剪刀小鲨鱼.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😄",
+        "✨",
+        "🎉"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 16,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "开心-彩色涂鸦机器人",
+      "filename": "开心-彩色涂鸦机器人.jpg",
+      "name": "开心-彩色涂鸦机器人",
+      "category": "09-机械科技",
+      "emotion": "开心 · 彩色涂鸦机器人",
+      "avatarSrc": "avatar-effects/开心-彩色涂鸦机器人.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(30, 30, 40, 0.32)",
+      "accentColors": [
+        "#1a1a2e",
+        "#4a4a6a",
+        "#c0c0c0",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🖤",
+        "·",
+        "✦"
+      ],
+      "maxParticles": 95,
+      "spawnRate": 11,
+      "avatarWeight": 0.38,
+      "bgPulse": 0.1,
+      "id": "冷峻-几何黑猫",
+      "filename": "冷峻-几何黑猫.jpg",
+      "name": "冷峻-几何黑猫",
+      "category": "04-高冷酷飒",
+      "emotion": "冷峻 · 几何黑猫",
+      "avatarSrc": "avatar-effects/冷峻-几何黑猫.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(30, 30, 40, 0.32)",
+      "accentColors": [
+        "#1a1a2e",
+        "#4a4a6a",
+        "#c0c0c0",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🌙",
+        "✦",
+        "👁"
+      ],
+      "maxParticles": 95,
+      "spawnRate": 11,
+      "avatarWeight": 0.38,
+      "bgPulse": 0.15,
+      "id": "神秘-水墨侧脸猫",
+      "filename": "神秘-水墨侧脸猫.jpg",
+      "name": "神秘-水墨侧脸猫",
+      "category": "04-高冷酷飒",
+      "emotion": "神秘 · 水墨侧脸猫",
+      "avatarSrc": "avatar-effects/神秘-水墨侧脸猫.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "❓",
+        "👀",
+        "✨"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 12,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "好奇-橙色发光机器人",
+      "filename": "好奇-橙色发光机器人.jpg",
+      "name": "好奇-橙色发光机器人",
+      "category": "09-机械科技",
+      "emotion": "好奇 · 橙色发光机器人",
+      "avatarSrc": "avatar-effects/好奇-橙色发光机器人.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "⚙",
+        "▣",
+        "◈",
+        "⌁"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 14,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "无辜-毛绒橙红机器人",
+      "filename": "无辜-毛绒橙红机器人.jpg",
+      "name": "无辜-毛绒橙红机器人",
+      "category": "09-机械科技",
+      "emotion": "无辜 · 毛绒橙红机器人",
+      "avatarSrc": "avatar-effects/无辜-毛绒橙红机器人.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "🤖",
+        "▣",
+        "·"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 10,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.14,
+      "id": "安静-奶油橙小生物",
+      "filename": "安静-奶油橙小生物.jpg",
+      "name": "安静-奶油橙小生物",
+      "category": "02-呆萌治愈",
+      "emotion": "安静 · 奶油橙小生物",
+      "avatarSrc": "avatar-effects/安静-奶油橙小生物.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "⚙",
+        "▣",
+        "◈",
+        "⌁"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 14,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "嫌弃-橙色酷脸机器人",
+      "filename": "嫌弃-橙色酷脸机器人.jpg",
+      "name": "嫌弃-橙色酷脸机器人",
+      "category": "09-机械科技",
+      "emotion": "嫌弃 · 橙色酷脸机器人",
+      "avatarSrc": "avatar-effects/嫌弃-橙色酷脸机器人.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "⚙",
+        "▣",
+        "◈",
+        "⌁"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 14,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "叛逆-街头涂鸦机器人",
+      "filename": "叛逆-街头涂鸦机器人.jpg",
+      "name": "叛逆-街头涂鸦机器人",
+      "category": "09-机械科技",
+      "emotion": "叛逆 · 街头涂鸦机器人",
+      "avatarSrc": "avatar-effects/叛逆-街头涂鸦机器人.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "❓",
+        "👀",
+        "✨"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 12,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.14,
+      "id": "好奇-洞洞探头猫",
+      "filename": "好奇-洞洞探头猫.jpg",
+      "name": "好奇-洞洞探头猫",
+      "category": "02-呆萌治愈",
+      "emotion": "好奇 · 洞洞探头猫",
+      "avatarSrc": "avatar-effects/好奇-洞洞探头猫.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😱",
+        "💥",
+        "❓",
+        "🌀"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.48,
+      "id": "反讽-溺水OK手势",
+      "filename": "反讽-溺水OK手势.jpg",
+      "name": "反讽-溺水OK手势",
+      "category": "03-搞怪抽象",
+      "emotion": "反讽 · 溺水OK手势",
+      "avatarSrc": "avatar-effects/反讽-溺水OK手势.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😎",
+        "✨",
+        "👑"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 15,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "得意-双指小人",
+      "filename": "得意-双指小人.jpg",
+      "name": "得意-双指小人",
+      "category": "06-活泼沙雕",
+      "emotion": "得意 · 双指小人",
+      "avatarSrc": "avatar-effects/得意-双指小人.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🎉",
+        "🔥",
+        "♪",
+        "✨"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 17,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "热情-麦克风天线宝宝",
+      "filename": "热情-麦克风天线宝宝.jpg",
+      "name": "热情-麦克风天线宝宝",
+      "category": "06-活泼沙雕",
+      "emotion": "热情 · 麦克风天线宝宝",
+      "avatarSrc": "avatar-effects/热情-麦克风天线宝宝.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🎉",
+        "🔥",
+        "♪",
+        "✨"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 17,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "投入-闭眼唱歌天线宝宝",
+      "filename": "投入-闭眼唱歌天线宝宝.jpg",
+      "name": "投入-闭眼唱歌天线宝宝",
+      "category": "06-活泼沙雕",
+      "emotion": "投入 · 闭眼唱歌天线宝宝",
+      "avatarSrc": "avatar-effects/投入-闭眼唱歌天线宝宝.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🎉",
+        "🔥",
+        "♪",
+        "✨"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 17,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "傻笑-潦草草鱼",
+      "filename": "傻笑-潦草草鱼.jpg",
+      "name": "傻笑-潦草草鱼",
+      "category": "06-活泼沙雕",
+      "emotion": "傻笑 · 潦草草鱼",
+      "avatarSrc": "avatar-effects/傻笑-潦草草鱼.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🎉",
+        "🔥",
+        "♪",
+        "✨"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 17,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "傻笑-潦草草鱼-副本",
+      "filename": "傻笑-潦草草鱼-副本.jpg",
+      "name": "傻笑-潦草草鱼-副本",
+      "category": "06-活泼沙雕",
+      "emotion": "傻笑 · 潦草草鱼 · 副本",
+      "avatarSrc": "avatar-effects/傻笑-潦草草鱼-副本.png"
+    },
+    {
+      "motion": "bounce",
+      "overlayColor": "rgba(255, 60, 60, 0.16)",
+      "accentColors": [
+        "#ff3333",
+        "#ffd700",
+        "#ff6666",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😊",
+        "✨",
+        "🌈"
+      ],
+      "maxParticles": 128,
+      "spawnRate": 16,
+      "avatarWeight": 0.46,
+      "bgPulse": 0.32,
+      "id": "快乐-黄色潦草脸",
+      "filename": "快乐-黄色潦草脸.jpg",
+      "name": "快乐-黄色潦草脸",
+      "category": "06-活泼沙雕",
+      "emotion": "快乐 · 黄色潦草脸",
+      "avatarSrc": "avatar-effects/快乐-黄色潦草脸.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "❓",
+        "👀",
+        "✨"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 12,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "好奇-复古铁皮机器人",
+      "filename": "好奇-复古铁皮机器人.jpg",
+      "name": "好奇-复古铁皮机器人",
+      "category": "09-机械科技",
+      "emotion": "好奇 · 复古铁皮机器人",
+      "avatarSrc": "avatar-effects/好奇-复古铁皮机器人.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(180, 200, 255, 0.24)",
+      "accentColors": [
+        "#5c6bc0",
+        "#7986cb",
+        "#fff8e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "📖",
+        "🎨",
+        "✨"
+      ],
+      "maxParticles": 100,
+      "spawnRate": 10,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.18,
+      "id": "文艺-眼镜橘猫",
+      "filename": "文艺-眼镜橘猫.jpg",
+      "name": "文艺-眼镜橘猫",
+      "category": "05-知性文艺",
+      "emotion": "文艺 · 眼镜橘猫",
+      "avatarSrc": "avatar-effects/文艺-眼镜橘猫.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "⚙",
+        "▣",
+        "◈",
+        "⌁"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 14,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "温和-绿帽小机器人",
+      "filename": "温和-绿帽小机器人.jpg",
+      "name": "温和-绿帽小机器人",
+      "category": "09-机械科技",
+      "emotion": "温和 · 绿帽小机器人",
+      "avatarSrc": "avatar-effects/温和-绿帽小机器人.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "⚙",
+        "▣",
+        "◈",
+        "⌁"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 14,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "温和-绿帽小机器人-副本",
+      "filename": "温和-绿帽小机器人-副本.jpg",
+      "name": "温和-绿帽小机器人-副本",
+      "category": "09-机械科技",
+      "emotion": "温和 · 绿帽小机器人 · 副本",
+      "avatarSrc": "avatar-effects/温和-绿帽小机器人-副本.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "▣",
+        "◈",
+        "·"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 10,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "冷静-黑色单眼机器人",
+      "filename": "冷静-黑色单眼机器人.jpg",
+      "name": "冷静-黑色单眼机器人",
+      "category": "09-机械科技",
+      "emotion": "冷静 · 黑色单眼机器人",
+      "avatarSrc": "avatar-effects/冷静-黑色单眼机器人.png"
+    },
+    {
+      "motion": "swirl",
+      "overlayColor": "rgba(0, 220, 255, 0.18)",
+      "accentColors": [
+        "#00bcd4",
+        "#26c6da",
+        "#4dd0e1",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "▣",
+        "◈",
+        "·"
+      ],
+      "maxParticles": 112,
+      "spawnRate": 10,
+      "avatarWeight": 0.45,
+      "bgPulse": 0.22,
+      "id": "冷静-黑色单眼机器人-副本",
+      "filename": "冷静-黑色单眼机器人-副本.jpg",
+      "name": "冷静-黑色单眼机器人-副本",
+      "category": "09-机械科技",
+      "emotion": "冷静 · 黑色单眼机器人 · 副本",
+      "avatarSrc": "avatar-effects/冷静-黑色单眼机器人-副本.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(100, 140, 200, 0.3)",
+      "accentColors": [
+        "#5c7cfa",
+        "#748ffc",
+        "#adb5bd",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😔",
+        "💧",
+        "…"
+      ],
+      "maxParticles": 92,
+      "spawnRate": 10,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.08,
+      "id": "郁闷-红云皱眉脸",
+      "filename": "郁闷-红云皱眉脸.jpg",
+      "name": "郁闷-红云皱眉脸",
+      "category": "08-忧郁敏感",
+      "emotion": "郁闷 · 红云皱眉脸",
+      "avatarSrc": "avatar-effects/郁闷-红云皱眉脸.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "🤖",
+        "▣",
+        "·"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 10,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.14,
+      "id": "安静-极简橙红_blob",
+      "filename": "安静-极简橙红_blob.jpg",
+      "name": "安静-极简橙红_blob",
+      "category": "02-呆萌治愈",
+      "emotion": "安静 · 极简橙红_blob",
+      "avatarSrc": "avatar-effects/安静-极简橙红_blob.png"
+    },
+    {
+      "motion": "fall",
+      "overlayColor": "rgba(100, 140, 200, 0.3)",
+      "accentColors": [
+        "#5c7cfa",
+        "#748ffc",
+        "#adb5bd",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "🥺",
+        "💧",
+        "🩹"
+      ],
+      "maxParticles": 92,
+      "spawnRate": 10,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.08,
+      "id": "受伤-红点皱眉脸",
+      "filename": "受伤-红点皱眉脸.jpg",
+      "name": "受伤-红点皱眉脸",
+      "category": "08-忧郁敏感",
+      "emotion": "受伤 · 红点皱眉脸",
+      "avatarSrc": "avatar-effects/受伤-红点皱眉脸.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "💗",
+        "🫧",
+        "🐟",
+        "✨"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 13,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.12,
+      "id": "害羞-腮红极简脸",
+      "filename": "害羞-腮红极简脸.jpg",
+      "name": "害羞-腮红极简脸",
+      "category": "02-呆萌治愈",
+      "emotion": "害羞 · 腮红极简脸",
+      "avatarSrc": "avatar-effects/害羞-腮红极简脸.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(224, 247, 255, 0.36)",
+      "accentColors": [
+        "#7ec8e3",
+        "#ffb6c1",
+        "#ffffff",
+        "#a8dff5"
+      ],
+      "emojiPool": [
+        "□",
+        "▢",
+        "·"
+      ],
+      "maxParticles": 105,
+      "spawnRate": 9,
+      "avatarWeight": 0.44,
+      "bgPulse": 0.14,
+      "id": "空白-橙色极简_blob",
+      "filename": "空白-橙色极简_blob.jpg",
+      "name": "空白-橙色极简_blob",
+      "category": "02-呆萌治愈",
+      "emotion": "空白 · 橙色极简_blob",
+      "avatarSrc": "avatar-effects/空白-橙色极简_blob.png"
+    },
+    {
+      "motion": "rise",
+      "overlayColor": "rgba(160, 160, 160, 0.28)",
+      "accentColors": [
+        "#bdbdbd",
+        "#9e9e9e",
+        "#757575",
+        "#eceff1"
+      ],
+      "emojiPool": [
+        "🧘",
+        "☁",
+        "✨"
+      ],
+      "maxParticles": 88,
+      "spawnRate": 8,
+      "avatarWeight": 0.42,
+      "bgPulse": 0.06,
+      "id": "禅定-金色佛像",
+      "filename": "禅定-金色佛像.jpg",
+      "name": "禅定-金色佛像",
+      "category": "01-慵懒佛系",
+      "emotion": "禅定 · 金色佛像",
+      "avatarSrc": "avatar-effects/禅定-金色佛像.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😱",
+        "💥"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.52,
+      "id": "惊恐-呐喊小猪",
+      "filename": "惊恐-呐喊小猪.jpg",
+      "name": "惊恐-呐喊小猪",
+      "category": "03-搞怪抽象",
+      "emotion": "惊恐 · 呐喊小猪",
+      "avatarSrc": "avatar-effects/惊恐-呐喊小猪.png"
+    },
+    {
+      "motion": "burst",
+      "overlayColor": "rgba(255, 120, 40, 0.22)",
+      "accentColors": [
+        "#ff6a00",
+        "#ff9500",
+        "#2d4a8a",
+        "#ffffff"
+      ],
+      "emojiPool": [
+        "😱",
+        "💥"
+      ],
+      "textPool": [
+        "!",
+        "!!",
+        "?!",
+        "啊"
+      ],
+      "maxParticles": 118,
+      "spawnRate": 20,
+      "avatarWeight": 0.4,
+      "bgPulse": 0.52,
+      "id": "惊恐-呐喊熊猫",
+      "filename": "惊恐-呐喊熊猫.jpg",
+      "name": "惊恐-呐喊熊猫",
+      "category": "03-搞怪抽象",
+      "emotion": "惊恐 · 呐喊熊猫",
+      "avatarSrc": "avatar-effects/惊恐-呐喊熊猫.png"
+    }
+  ]
+}

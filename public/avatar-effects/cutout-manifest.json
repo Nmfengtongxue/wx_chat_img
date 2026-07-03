@@ -1,0 +1,518 @@
+{
+  "files": [
+    {
+      "source": "崩溃-乱掏口袋哆啦A梦.jpg",
+      "output": "崩溃-乱掏口袋哆啦A梦.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 54.4,
+      "index": "1/72"
+    },
+    {
+      "source": "摆烂-躺平青蛙.jpg",
+      "output": "摆烂-躺平青蛙.png",
+      "bg_type": "red",
+      "model": "isnet-general-use",
+      "opaque_percent": 32.1,
+      "index": "2/72"
+    },
+    {
+      "source": "无聊-长草黑白猫.jpg",
+      "output": "无聊-长草黑白猫.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 29.7,
+      "index": "3/72"
+    },
+    {
+      "source": "疲惫-纸箱国王.jpg",
+      "output": "疲惫-纸箱国王.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 43.3,
+      "index": "4/72"
+    },
+    {
+      "source": "禅定-金色佛像.jpg",
+      "output": "禅定-金色佛像.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 67.3,
+      "index": "5/72"
+    },
+    {
+      "source": "躺平-爱心墨镜狗.jpg",
+      "output": "躺平-爱心墨镜狗.png",
+      "bg_type": "complex",
+      "model": "silueta",
+      "opaque_percent": 32.1,
+      "index": "6/72"
+    },
+    {
+      "source": "好奇-洞洞探头猫.jpg",
+      "output": "好奇-洞洞探头猫.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 46.7,
+      "index": "7/72"
+    },
+    {
+      "source": "好奇-腮红潦草象.jpg",
+      "output": "好奇-腮红潦草象.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 24.8,
+      "index": "8/72"
+    },
+    {
+      "source": "安静-奶油橙小生物.jpg",
+      "output": "安静-奶油橙小生物.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 32.2,
+      "index": "9/72"
+    },
+    {
+      "source": "安静-极简橙红_blob.jpg",
+      "output": "安静-极简橙红_blob.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 40.3,
+      "index": "10/72"
+    },
+    {
+      "source": "害羞-腮红极简脸.jpg",
+      "output": "害羞-腮红极简脸.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 42.5,
+      "index": "12/72"
+    },
+    {
+      "source": "空白-橙色极简_blob.jpg",
+      "output": "空白-橙色极简_blob.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 45.8,
+      "index": "13/72"
+    },
+    {
+      "source": "反讽-溺水OK手势.jpg",
+      "output": "反讽-溺水OK手势.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 14.0,
+      "index": "14/72"
+    },
+    {
+      "source": "呆滞-龅牙潦草兽.jpg",
+      "output": "呆滞-龅牙潦草兽.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 18.6,
+      "index": "15/72"
+    },
+    {
+      "error": "呆萌-潦草熊猫.jpg",
+      "message": "rembg 失败",
+      "index": "16/72"
+    },
+    {
+      "error": "崩溃-炸毛潦草鸟.jpg",
+      "message": "rembg 失败",
+      "index": "17/72"
+    },
+    {
+      "source": "惊恐-呐喊熊猫.jpg",
+      "output": "惊恐-呐喊熊猫.png",
+      "bg_type": "red",
+      "model": "isnet-general-use",
+      "opaque_percent": 46.0,
+      "index": "19/72"
+    },
+    {
+      "source": "惊讶-潦草金鱼.jpg",
+      "output": "惊讶-潦草金鱼.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 16.1,
+      "index": "20/72"
+    },
+    {
+      "source": "懵圈-叼花潦草猪.jpg",
+      "output": "懵圈-叼花潦草猪.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 28.9,
+      "index": "21/72"
+    },
+    {
+      "error": "懵圈-长脖潦草鹅.jpg",
+      "message": "rembg 失败",
+      "index": "22/72"
+    },
+    {
+      "source": "抓狂-凌乱潦草鸭.jpg",
+      "output": "抓狂-凌乱潦草鸭.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 8.1,
+      "index": "23/72"
+    },
+    {
+      "source": "神秘-靶眼蒙面猫-副本.jpg",
+      "output": "神秘-靶眼蒙面猫-副本.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 41.7,
+      "index": "24/72"
+    },
+    {
+      "source": "神秘-靶眼蒙面猫.jpg",
+      "output": "神秘-靶眼蒙面猫.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 41.7,
+      "index": "25/72"
+    },
+    {
+      "source": "紧张-潦草小鼠.jpg",
+      "output": "紧张-潦草小鼠.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 13.6,
+      "index": "26/72"
+    },
+    {
+      "source": "过载-闪电潦草云.jpg",
+      "output": "过载-闪电潦草云.png",
+      "bg_type": "red",
+      "model": "u2net",
+      "opaque_percent": 46.7,
+      "index": "27/72"
+    },
+    {
+      "source": "优雅-蕾丝帽橘猫.jpg",
+      "output": "优雅-蕾丝帽橘猫.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 29.7,
+      "index": "28/72"
+    },
+    {
+      "source": "冷峻-几何黑猫.jpg",
+      "output": "冷峻-几何黑猫.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 20.2,
+      "index": "29/72"
+    },
+    {
+      "source": "神秘-水墨侧脸猫.jpg",
+      "output": "神秘-水墨侧脸猫.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 23.2,
+      "index": "30/72"
+    },
+    {
+      "source": "酷飒-墨镜烟斗猫.jpg",
+      "output": "酷飒-墨镜烟斗猫.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 36.0,
+      "index": "31/72"
+    },
+    {
+      "source": "好奇-仰望蓝鱼男孩.jpg",
+      "output": "好奇-仰望蓝鱼男孩.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 16.3,
+      "index": "32/72"
+    },
+    {
+      "source": "好学-学霸小鲨鱼.jpg",
+      "output": "好学-学霸小鲨鱼.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 48.1,
+      "index": "33/72"
+    },
+    {
+      "source": "推理-烟斗侦探猫.jpg",
+      "output": "推理-烟斗侦探猫.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 25.8,
+      "index": "34/72"
+    },
+    {
+      "source": "文艺-眼镜橘猫.jpg",
+      "output": "文艺-眼镜橘猫.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 52.7,
+      "index": "35/72"
+    },
+    {
+      "source": "温柔-眼镜小鱼.jpg",
+      "output": "温柔-眼镜小鱼.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 37.0,
+      "index": "36/72"
+    },
+    {
+      "source": "傻笑-潦草草鱼-副本.jpg",
+      "output": "傻笑-潦草草鱼-副本.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 22.0,
+      "index": "37/72"
+    },
+    {
+      "source": "傻笑-潦草草鱼.jpg",
+      "output": "傻笑-潦草草鱼.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 22.0,
+      "index": "38/72"
+    },
+    {
+      "source": "冒险-草帽路飞.jpg",
+      "output": "冒险-草帽路飞.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 34.1,
+      "index": "39/72"
+    },
+    {
+      "source": "嗨皮-啤酒科米蛙.jpg",
+      "output": "嗨皮-啤酒科米蛙.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 34.7,
+      "index": "41/72"
+    },
+    {
+      "source": "开心-史努比.jpg",
+      "output": "开心-史努比.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 36.1,
+      "index": "42/72"
+    },
+    {
+      "source": "开心-笑脸潦草驴.jpg",
+      "output": "开心-笑脸潦草驴.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 19.9,
+      "index": "43/72"
+    },
+    {
+      "source": "得意-双指小人.jpg",
+      "output": "得意-双指小人.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 7.3,
+      "index": "44/72"
+    },
+    {
+      "error": "快乐-黄色潦草脸.jpg",
+      "message": "rembg 失败",
+      "index": "45/72"
+    },
+    {
+      "source": "投入-闭眼唱歌天线宝宝.jpg",
+      "output": "投入-闭眼唱歌天线宝宝.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 33.9,
+      "index": "46/72"
+    },
+    {
+      "source": "热情-麦克风天线宝宝.jpg",
+      "output": "热情-麦克风天线宝宝.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 31.4,
+      "index": "47/72"
+    },
+    {
+      "source": "狂喜-摇头潦草小狗.jpg",
+      "output": "狂喜-摇头潦草小狗.png",
+      "bg_type": "white",
+      "model": "silueta",
+      "opaque_percent": 0.2,
+      "index": "48/72"
+    },
+    {
+      "source": "暴怒-杰瑞鼠.jpg",
+      "output": "暴怒-杰瑞鼠.png",
+      "bg_type": "red",
+      "model": "u2net",
+      "opaque_percent": 30.7,
+      "index": "49/72"
+    },
+    {
+      "error": "受伤-红点皱眉脸.jpg",
+      "message": "rembg 失败",
+      "index": "50/72"
+    },
+    {
+      "source": "委屈-撒娇小猫.jpg",
+      "output": "委屈-撒娇小猫.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 37.2,
+      "index": "51/72"
+    },
+    {
+      "source": "郁闷-红云皱眉脸.jpg",
+      "output": "郁闷-红云皱眉脸.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 42.0,
+      "index": "52/72"
+    },
+    {
+      "source": "冷静-黑色单眼机器人-副本.jpg",
+      "output": "冷静-黑色单眼机器人-副本.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 64.3,
+      "index": "53/72"
+    },
+    {
+      "source": "冷静-黑色单眼机器人.jpg",
+      "output": "冷静-黑色单眼机器人.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 64.3,
+      "index": "54/72"
+    },
+    {
+      "source": "叛逆-街头涂鸦机器人.jpg",
+      "output": "叛逆-街头涂鸦机器人.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 32.9,
+      "index": "55/72"
+    },
+    {
+      "source": "好奇-复古铁皮机器人.jpg",
+      "output": "好奇-复古铁皮机器人.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 20.0,
+      "index": "56/72"
+    },
+    {
+      "source": "好奇-橙色发光机器人.jpg",
+      "output": "好奇-橙色发光机器人.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 49.5,
+      "index": "57/72"
+    },
+    {
+      "source": "嫌弃-橙色酷脸机器人.jpg",
+      "output": "嫌弃-橙色酷脸机器人.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 27.4,
+      "index": "58/72"
+    },
+    {
+      "source": "安静-蓝白小机器人.jpg",
+      "output": "安静-蓝白小机器人.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 35.6,
+      "index": "59/72"
+    },
+    {
+      "source": "开心-彩色涂鸦机器人.jpg",
+      "output": "开心-彩色涂鸦机器人.png",
+      "bg_type": "white",
+      "model": "silueta",
+      "opaque_percent": 28.3,
+      "index": "60/72"
+    },
+    {
+      "source": "无辜-毛绒橙红机器人.jpg",
+      "output": "无辜-毛绒橙红机器人.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 33.4,
+      "index": "61/72"
+    },
+    {
+      "source": "温和-绿帽小机器人-副本.jpg",
+      "output": "温和-绿帽小机器人-副本.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 60.9,
+      "index": "62/72"
+    },
+    {
+      "source": "温和-绿帽小机器人.jpg",
+      "output": "温和-绿帽小机器人.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 60.9,
+      "index": "63/72"
+    },
+    {
+      "source": "认真-机甲皮卡丘.jpg",
+      "output": "认真-机甲皮卡丘.png",
+      "bg_type": "white",
+      "model": "isnet-general-use",
+      "opaque_percent": 47.5,
+      "index": "64/72"
+    },
+    {
+      "source": "双面-海绵宝宝影子.jpg",
+      "output": "双面-海绵宝宝影子.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 45.7,
+      "index": "65/72"
+    },
+    {
+      "source": "邪笑-剪刀小鲨鱼.jpg",
+      "output": "邪笑-剪刀小鲨鱼.png",
+      "bg_type": "white",
+      "model": "u2net",
+      "opaque_percent": 59.7,
+      "index": "66/72"
+    },
+    {
+      "source": "邪萌-塑料袋鳄鱼.jpg",
+      "output": "邪萌-塑料袋鳄鱼.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 48.1,
+      "index": "67/72"
+    },
+    {
+      "source": "邪萌-头套河马.jpg",
+      "output": "邪萌-头套河马.png",
+      "bg_type": "complex",
+      "model": "u2net",
+      "opaque_percent": 37.1,
+      "index": "68/72"
+    },
+    {
+      "source": "邪萌-头套海狸.jpg",
+      "output": "邪萌-头套海狸.png",
+      "bg_type": "complex",
+      "model": "isnet-general-use",
+      "opaque_percent": 58.8,
+      "index": "69/72"
+    }
+  ],
+  "total": 72
+}

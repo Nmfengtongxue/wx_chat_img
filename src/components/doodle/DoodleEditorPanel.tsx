@@ -24,6 +24,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useDoodleStore } from '../../store/useDoodleStore'
 import type { DoodleFrameStyle, DoodleMessage } from '../../types/doodle'
 import { FontPicker } from './FontPicker'
+import { AvatarPicker } from './AvatarPicker'
 import { AvatarFrame } from './frames'
 
 function FrameStylePicker({
@@ -372,7 +373,9 @@ export function DoodleEditorPanel() {
 
         {activeTab === 'avatars' && (
           <div className="space-y-4">
-            <p className="text-sm text-slate-500">上传手绘头像，建议使用正方形透明或白底图片</p>
+            <p className="text-sm text-slate-500">
+              点击头像库缩略图快速更换，或点击左侧预览上传自定义图片
+            </p>
             {users.map((user) => (
               <div key={user.id} className="p-4 rounded-xl border border-slate-200 space-y-3">
                 <p className="text-sm font-medium text-slate-700">
@@ -424,6 +427,10 @@ export function DoodleEditorPanel() {
                     )}
                   </div>
                 </div>
+                <AvatarPicker
+                  value={user.avatar}
+                  onChange={(url) => updateUser(user.id, { avatar: url })}
+                />
               </div>
             ))}
           </div>

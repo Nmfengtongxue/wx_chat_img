@@ -8,7 +8,10 @@
     "build": "tsc -b && vite build",
     "build:pages": "tsc -b && VITE_BASE=/wx_chat_img/ vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:presets": "python3 scripts/generate_burst_presets.py",
+    "cutout:avatars": "python3 scripts/cutout_avatar.py",
+    "assets:avatars": "npm run generate:presets && npm run cutout:avatars"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
