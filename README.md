@@ -47,7 +47,9 @@ npm run dev
 
 在 Cursor 中：`Cmd+Shift+P` → `Tasks: Run Task` → `启动开发服务器`，再用 Simple Browser 打开上述地址。
 
-在线访问：https://nmfengtongxue.github.io/wx_chat_img/
+在线访问：
+- GitHub Pages：https://nmfengtongxue.github.io/wx_chat_img/
+- Cloudflare Pages：https://wx-chat-img.pages.dev/（需在 GitHub 配置 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID` 后自动部署）
 
 ## 构建
 

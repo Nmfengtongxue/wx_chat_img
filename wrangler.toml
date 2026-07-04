@@ -1,0 +1,4 @@
+# 本地手动部署：npx wrangler pages deploy dist --project-name=wx-chat-img
+name = "wx-chat-img"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
