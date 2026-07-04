@@ -49,7 +49,8 @@ npm run dev
 
 在线访问：
 - GitHub Pages：https://nmfengtongxue.github.io/wx_chat_img/
-- Cloudflare Pages：https://wx-chat-img.pages.dev/（需在 GitHub 配置 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID` 后自动部署）
+- Cloudflare Pages：https://wx-chat-img.pages.dev/（需在 GitHub 配置 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`）
+- 腾讯云 CloudBase：https://wx-chat-images-d5g75hzivc47793bd.tcloudbaseapp.com/（`npm run deploy:cloudbase`）
 
 ## 构建
 

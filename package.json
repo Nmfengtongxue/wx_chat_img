@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "build:pages": "tsc -b && VITE_BASE=/wx_chat_img/ vite build",
     "build:gitee-pages": "tsc -b && VITE_BASE=/Wx_chat_images/ vite build",
+    "deploy:cloudbase": "npm run build && tcb hosting deploy dist -e wx-chat-images-d5g75hzivc47793bd",
+    "deploy:cloudbase:only": "tcb hosting deploy dist -e wx-chat-images-d5g75hzivc47793bd",
     "lint": "oxlint",
     "preview": "vite preview",
     "generate:presets": "python3 scripts/generate_burst_presets.py",
@@ -25,6 +27,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@cloudbase/cli": "^3.5.9",
     "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
