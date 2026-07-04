@@ -70,6 +70,7 @@ export function DoodlePreview({ viewportHeight }: DoodlePreviewProps) {
               <div
                 ref={contentRef}
                 data-screenshot-target
+                data-export-width={canvasWidth}
                 className="bg-white"
                 style={{
                   width: canvasWidth,
@@ -103,9 +104,11 @@ export function DoodlePreview({ viewportHeight }: DoodlePreviewProps) {
                       return (
                         <div
                           key={msg.id}
-                          className={`group/row flex items-start gap-2.5 cursor-pointer rounded-lg transition-colors ${
-                            side === 'right' ? 'flex-row-reverse' : 'flex-row'
-                          } ${selectedId === msg.id ? 'ring-2 ring-emerald-400/70 ring-offset-2' : ''}`}
+                          className={`doodle-message-row group/row ${
+                            side === 'right' ? 'is-right' : 'is-left'
+                          } cursor-pointer rounded-lg transition-colors ${
+                            selectedId === msg.id ? 'ring-2 ring-emerald-400/70 ring-offset-2' : ''
+                          }`}
                           onClick={() => selectMessage(msg.id)}
                         >
                           <PreviewMessageAvatar
@@ -115,17 +118,25 @@ export function DoodlePreview({ viewportHeight }: DoodlePreviewProps) {
                             side={side}
                             seed={user?.id ?? side}
                             onBurst={handleBurst}
+                            className={side === 'left' ? 'mr-2.5' : 'ml-2.5'}
                           />
-                          <BubbleFrame
-                            style={settings.bubbleFrameStyle ?? 'classic'}
-                            content={msg.content}
-                            side={side}
-                            color={settings.bubbleColor}
-                            fontFamily={fontFamily}
-                            fontSize={settings.bubbleFontSize}
-                            seed={msg.id}
-                            maxWidth={maxBubbleWidth}
-                          />
+                          <div
+                            className="doodle-bubble-slot"
+                            style={{
+                              maxWidth: maxBubbleWidth + settings.avatarSize + 10,
+                            }}
+                          >
+                            <BubbleFrame
+                              style={settings.bubbleFrameStyle ?? 'classic'}
+                              content={msg.content}
+                              side={side}
+                              color={settings.bubbleColor}
+                              fontFamily={fontFamily}
+                              fontSize={settings.bubbleFontSize}
+                              seed={msg.id}
+                              maxWidth={maxBubbleWidth}
+                            />
+                          </div>
                         </div>
                       )
                     })

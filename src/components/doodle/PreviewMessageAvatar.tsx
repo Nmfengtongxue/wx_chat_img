@@ -12,6 +12,7 @@ interface PreviewMessageAvatarProps {
   side: 'left' | 'right'
   seed: string
   onBurst: (preset: AvatarBurstPreset) => void
+  className?: string
 }
 
 export function PreviewMessageAvatar({
@@ -21,6 +22,7 @@ export function PreviewMessageAvatar({
   side,
   seed,
   onBurst,
+  className = '',
 }: PreviewMessageAvatarProps) {
   const [patting, setPatting] = useState(false)
   const [patHint, setPatHint] = useState<string | null>(null)
@@ -43,7 +45,7 @@ export function PreviewMessageAvatar({
   const { onClick, onTouchEnd } = useMultiTap(triggerPat)
 
   return (
-    <div className="relative shrink-0">
+    <div className={`relative shrink-0 ${className}`}>
       <div
         role="button"
         tabIndex={canPat ? 0 : undefined}

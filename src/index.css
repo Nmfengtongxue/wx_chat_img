@@ -55,6 +55,34 @@
     outline: none !important;
   }
 
+  /* 导出时锁定宽度，避免移动端 html-to-image 重排 */
+  [data-screenshot-target].screenshot-exporting {
+    width: var(--export-width, 390px) !important;
+    min-width: var(--export-width, 390px) !important;
+    max-width: var(--export-width, 390px) !important;
+    overflow: visible !important;
+  }
+
+  .doodle-message-row {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .doodle-message-row.is-left {
+    flex-direction: row;
+  }
+
+  .doodle-message-row.is-right {
+    flex-direction: row-reverse;
+  }
+
+  .doodle-bubble-slot {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+
   .avatar-pat-bounce {
     animation: avatar-pat-bounce 0.48s cubic-bezier(0.34, 1.4, 0.64, 1);
   }

@@ -1,15 +1,80 @@
 import { getFontEmbedCSS, toPng } from 'html-to-image'
+import { bundledFontUrl, ensureFontLoaded } from './fonts'
+import type { DoodleFont } from '../types/doodle'
 
 export interface ScreenshotOptions {
   filename?: string
   backgroundColor?: string
   long?: boolean
   fitContent?: boolean
+  /** 导出前加载字体（手绘模式） */
+  font?: DoodleFont
 }
 
-interface RestoreFn {
-  (): void
-}
+/** 导出时从预览 DOM 同步到克隆体的关键样式（移动端 foreignObject 常丢失 CSS） */
+const EXPORT_STYLE_PROPS = [
+  'display',
+  'flex-direction',
+  'align-items',
+  'justify-content',
+  'flex',
+  'flex-shrink',
+  'flex-grow',
+  'flex-basis',
+  'width',
+  'height',
+  'min-width',
+  'max-width',
+  'min-height',
+  'max-height',
+  'margin-top',
+  'margin-right',
+  'margin-bottom',
+  'margin-left',
+  'padding-top',
+  'padding-right',
+  'padding-bottom',
+  'padding-left',
+  'font-family',
+  'font-size',
+  'font-weight',
+  'line-height',
+  'letter-spacing',
+  'color',
+  'background-color',
+  'border-top-width',
+  'border-right-width',
+  'border-bottom-width',
+  'border-left-width',
+  'border-top-color',
+  'border-right-color',
+  'border-bottom-color',
+  'border-left-color',
+  'border-top-style',
+  'border-right-style',
+  'border-bottom-style',
+  'border-left-style',
+  'border-radius',
+  'box-sizing',
+  'position',
+  'top',
+  'left',
+  'right',
+  'bottom',
+  'transform',
+  'white-space',
+  'word-break',
+  'overflow',
+  'vertical-align',
+  'text-align',
+  'object-fit',
+  'opacity',
+  'z-index',
+  'clip-path',
+  'gap',
+  'row-gap',
+  'column-gap',
+] as const
 
 function isMobileDevice() {
   return (
@@ -18,7 +83,6 @@ function isMobileDevice() {
   )
 }
 
-/** 避免移动端 canvas 超大导致导出空白或变形 */
 function getSafePixelRatio(width: number, height: number) {
   const dpr = window.devicePixelRatio || 1
   let ratio = isMobileDevice() ? Math.min(dpr, 2) : Math.min(dpr, 3)
@@ -34,89 +98,115 @@ function getSafePixelRatio(width: number, height: number) {
   return Math.max(1, ratio)
 }
 
-/** 导出前重置滚动，避免移动端只截到可视区域片段 */
-function resetScrollChain(el: HTMLElement): RestoreFn {
-  const saved: Array<{ node: HTMLElement; scrollTop: number; scrollLeft: number }> = []
-  let node: HTMLElement | null = el
-  while (node && node !== document.body) {
-    if (node.scrollTop || node.scrollLeft) {
-      saved.push({
-        node,
-        scrollTop: node.scrollTop,
-        scrollLeft: node.scrollLeft,
-      })
-      node.scrollTop = 0
-      node.scrollLeft = 0
+function readExportWidth(el: HTMLElement): number {
+  const fromData = Number(el.dataset.exportWidth)
+  if (fromData > 0) return fromData
+  return Math.ceil(el.getBoundingClientRect().width) || el.offsetWidth || 390
+}
+
+function isElementNode(node: Node): node is HTMLElement | SVGElement {
+  return node.nodeType === Node.ELEMENT_NODE
+}
+
+/** 将预览中已计算好的样式写入克隆体，保证 WYSIWYG */
+function syncComputedStyles(sourceRoot: HTMLElement, cloneRoot: HTMLElement) {
+  const sourceNodes = [sourceRoot, ...sourceRoot.querySelectorAll('*')]
+  const cloneNodes = [cloneRoot, ...cloneRoot.querySelectorAll('*')]
+
+  const len = Math.min(sourceNodes.length, cloneNodes.length)
+  for (let i = 0; i < len; i++) {
+    const src = sourceNodes[i]
+    const dst = cloneNodes[i]
+    if (!isElementNode(src) || !isElementNode(dst)) continue
+    if (src.tagName !== dst.tagName) continue
+
+    const cs = getComputedStyle(src)
+    for (const prop of EXPORT_STYLE_PROPS) {
+      const val = cs.getPropertyValue(prop)
+      if (val) dst.style.setProperty(prop, val)
     }
-    node = node.parentElement
-  }
-  return () => {
-    saved.forEach(({ node, scrollTop, scrollLeft }) => {
-      node.scrollTop = scrollTop
-      node.scrollLeft = scrollLeft
-    })
+
+    if (dst instanceof SVGElement && src instanceof SVGElement) {
+      for (const attr of ['width', 'height', 'viewBox']) {
+        const v = src.getAttribute(attr)
+        if (v) dst.setAttribute(attr, v)
+      }
+    }
+
+    if (dst.tagName === 'IMG' && src instanceof HTMLImageElement && dst instanceof HTMLImageElement) {
+      dst.src = src.currentSrc || src.src
+      if (src.crossOrigin) dst.crossOrigin = src.crossOrigin
+    }
   }
 }
 
-/** 导出前解除父级 overflow 裁剪，否则移动端常只截到可视区域且布局错乱 */
-function unlockOverflowChain(el: HTMLElement): RestoreFn {
-  const saved: Array<{
-    node: HTMLElement
-    overflow: string
-    overflowY: string
-    height: string
-    maxHeight: string
-  }> = []
+function sanitizeClone(clone: HTMLElement) {
+  clone.querySelectorAll('.pat-hint-float').forEach((el) => el.remove())
 
-  let node = el.parentElement
-  while (node && node !== document.body) {
-    const cs = getComputedStyle(node)
-    const clipped =
-      cs.overflow !== 'visible' ||
-      cs.overflowY !== 'visible' ||
-      cs.height !== 'auto' ||
-      (cs.maxHeight !== 'none' && cs.maxHeight !== '0px')
-
-    if (clipped) {
-      saved.push({
-        node,
-        overflow: node.style.overflow,
-        overflowY: node.style.overflowY,
-        height: node.style.height,
-        maxHeight: node.style.maxHeight,
-      })
-      node.style.overflow = 'visible'
-      node.style.overflowY = 'visible'
-      node.style.height = 'auto'
-      node.style.maxHeight = 'none'
-    }
-    node = node.parentElement
-  }
-
-  return () => {
-    saved.forEach(({ node, overflow, overflowY, height, maxHeight }) => {
-      node.style.overflow = overflow
-      node.style.overflowY = overflowY
-      node.style.height = height
-      node.style.maxHeight = maxHeight
-    })
-  }
-}
-
-/** 导出前清理阴影/选框，避免 html-to-image 出现矩形灰块 */
-function prepareScreenshotStyles(root: HTMLElement): RestoreFn {
-  root.classList.add('screenshot-exporting')
-
-  const marked: HTMLElement[] = []
-  root.querySelectorAll<HTMLElement>('[class*="ring-emerald"]').forEach((el) => {
-    el.classList.add('screenshot-exporting')
-    marked.push(el)
+  clone.querySelectorAll<HTMLElement>('[class*="ring-emerald"]').forEach((el) => {
+    el.className = el.className
+      .split(/\s+/)
+      .filter((c) => !c.startsWith('ring-') && !c.startsWith('ring-offset-'))
+      .join(' ')
   })
 
-  return () => {
-    root.classList.remove('screenshot-exporting')
-    marked.forEach((el) => el.classList.remove('screenshot-exporting'))
-  }
+  clone.querySelectorAll<HTMLElement>('.avatar-pat-bounce').forEach((el) => {
+    el.classList.remove('avatar-pat-bounce')
+  })
+}
+
+function createExportHost(source: HTMLElement, exportWidth: number) {
+  const clone = source.cloneNode(true) as HTMLElement
+  sanitizeClone(clone)
+  syncComputedStyles(source, clone)
+
+  clone.classList.add('screenshot-exporting')
+  clone.style.setProperty('--export-width', `${exportWidth}px`)
+  clone.style.width = `${exportWidth}px`
+  clone.style.minWidth = `${exportWidth}px`
+  clone.style.maxWidth = `${exportWidth}px`
+  clone.style.boxSizing = 'border-box'
+  clone.style.overflow = 'visible'
+  clone.style.margin = '0'
+
+  const host = document.createElement('div')
+  host.setAttribute('aria-hidden', 'true')
+  host.style.cssText = [
+    'position:fixed',
+    'left:-100000px',
+    'top:0',
+    `width:${exportWidth}px`,
+    'overflow:visible',
+    'visibility:hidden',
+    'pointer-events:none',
+    'z-index:-1',
+  ].join(';')
+  host.appendChild(clone)
+  document.body.appendChild(host)
+
+  return { clone, cleanup: () => host.remove() }
+}
+
+async function waitForImages(root: HTMLElement) {
+  const imgs = Array.from(root.querySelectorAll('img'))
+  await Promise.all(
+    imgs.map(
+      (img) =>
+        new Promise<void>((resolve) => {
+          if (img.complete && img.naturalWidth > 0) {
+            resolve()
+            return
+          }
+          const done = () => resolve()
+          img.addEventListener('load', done, { once: true })
+          img.addEventListener('error', done, { once: true })
+          const src = img.getAttribute('src')
+          if (src) {
+            img.src = src
+          }
+        }),
+    ),
+  )
 }
 
 async function waitForStableLayout(el: HTMLElement) {
@@ -127,12 +217,25 @@ async function waitForStableLayout(el: HTMLElement) {
   void el.scrollHeight
 }
 
-function measureExportSize(el: HTMLElement, fitContent: boolean) {
-  const width = Math.ceil(el.getBoundingClientRect().width) || el.scrollWidth
-  const height = fitContent
-    ? Math.ceil(el.scrollHeight)
-    : Math.ceil(el.getBoundingClientRect().height) || el.scrollHeight
-  return { width: Math.max(width, 1), height: Math.max(height, 1) }
+async function buildFontEmbedCSS(element: HTMLElement): Promise<string | undefined> {
+  try {
+    const css = await getFontEmbedCSS(element, { cacheBust: true })
+    if (css?.trim()) return css
+  } catch {
+    /* fallback below */
+  }
+
+  try {
+    const res = await fetch(bundledFontUrl('fonts/huangyou-tangxin.ttf'))
+    const buf = await res.arrayBuffer()
+    const bytes = new Uint8Array(buf)
+    let binary = ''
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]!)
+    const b64 = btoa(binary)
+    return `@font-face{font-family:'黄油溏心体';src:url(data:font/ttf;base64,${b64}) format('truetype');font-weight:normal;font-style:normal;}`
+  } catch {
+    return undefined
+  }
 }
 
 export async function captureElementToPng(
@@ -141,48 +244,52 @@ export async function captureElementToPng(
     backgroundColor: string
     long?: boolean
     fitContent?: boolean
+    font?: DoodleFont
   },
 ): Promise<string> {
   const long = options.long ?? true
   const fitContent = options.fitContent ?? true
+  const exportWidth = readExportWidth(element)
 
+  if (options.font) {
+    await ensureFontLoaded(options.font)
+  }
   await waitForStableLayout(element)
 
-  const restoreScroll = resetScrollChain(element)
-  const restoreOverflow = unlockOverflowChain(element)
-  const restoreStyles = prepareScreenshotStyles(element)
+  const { clone, cleanup } = createExportHost(element, exportWidth)
 
   try {
-    await waitForStableLayout(element)
+    await waitForImages(clone)
+    await waitForStableLayout(clone)
 
-    const { width, height } = measureExportSize(element, long && fitContent)
-    const pixelRatio = getSafePixelRatio(width, height)
+    const height =
+      long && fitContent
+        ? Math.max(clone.scrollHeight, clone.offsetHeight, element.scrollHeight)
+        : Math.max(clone.offsetHeight, element.offsetHeight)
 
-    let fontEmbedCSS: string | undefined
-    try {
-      fontEmbedCSS = await getFontEmbedCSS(element, { cacheBust: true })
-    } catch {
-      fontEmbedCSS = undefined
-    }
+    clone.style.height = long && fitContent ? `${height}px` : ''
 
-    return await toPng(element, {
+    const pixelRatio = getSafePixelRatio(exportWidth, height)
+    const fontEmbedCSS = await buildFontEmbedCSS(clone)
+
+    return await toPng(clone, {
       cacheBust: true,
       backgroundColor: options.backgroundColor,
       pixelRatio,
-      width,
-      height,
       fontEmbedCSS,
+      skipFonts: false,
       style: {
         transform: 'none',
         margin: '0',
         overflow: 'visible',
+        width: `${exportWidth}px`,
+        minWidth: `${exportWidth}px`,
+        maxWidth: `${exportWidth}px`,
+        ...(long && fitContent ? { height: `${height}px` } : {}),
       },
-      skipFonts: false,
     })
   } finally {
-    restoreStyles()
-    restoreOverflow()
-    restoreScroll()
+    cleanup()
   }
 }
 
@@ -195,12 +302,12 @@ export async function exportScreenshot(
     backgroundColor: opts.backgroundColor ?? '#000',
     long: opts.long ?? true,
     fitContent: opts.fitContent ?? true,
+    font: opts.font,
   })
 
   const filename = opts.filename ?? '微信聊天截图.png'
   const blob = await (await fetch(dataUrl)).blob()
 
-  // 移动端 Safari 对 download 属性支持差，使用 Blob URL + 点击；仍失败则新窗口打开
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
@@ -222,11 +329,13 @@ export async function copyScreenshot(
   backgroundColor = '#000',
   long = true,
   fitContent = true,
+  font?: DoodleFont,
 ) {
   const dataUrl = await captureElementToPng(element, {
     backgroundColor,
     long,
     fitContent,
+    font,
   })
 
   const blob = await (await fetch(dataUrl)).blob()

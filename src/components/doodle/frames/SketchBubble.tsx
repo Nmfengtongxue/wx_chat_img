@@ -31,10 +31,11 @@ export function SketchFrameBubble({
     if (!el) return
 
     const measure = () => {
-      const rect = el.getBoundingClientRect()
+      const w = Math.ceil(el.scrollWidth || el.offsetWidth)
+      const h = Math.ceil(el.scrollHeight || el.offsetHeight)
       setSize({
-        w: Math.ceil(rect.width) + STROKE,
-        h: Math.ceil(rect.height) + STROKE,
+        w: w + STROKE,
+        h: h + STROKE,
       })
     }
 
@@ -61,7 +62,10 @@ export function SketchFrameBubble({
   const svgLeft = side === 'left' ? -TAIL : 0
 
   return (
-    <div className={`relative ${side === 'right' ? 'mr-1' : 'ml-1'}`} style={{ maxWidth }}>
+    <div
+      className={`relative ${side === 'right' ? 'mr-1' : 'ml-1'}`}
+      style={{ maxWidth, minWidth: 0 }}
+    >
       <div className="relative inline-block" style={{ marginLeft: side === 'left' ? TAIL : 0 }}>
         <svg
           className="absolute top-0 pointer-events-none"
