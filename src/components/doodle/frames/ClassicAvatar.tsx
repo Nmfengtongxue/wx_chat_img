@@ -43,8 +43,8 @@ export function ClassicAvatar({
       }}
     >
       {url ? (
-        <img src={url} alt="" className="w-full h-full object-cover" />
-      ) : (
+          <img src={url} alt="" className="w-full h-full object-cover" crossOrigin="anonymous" />
+        ) : (
         <PlaceholderIcon size={size} side={side} />
       )}
     </div>

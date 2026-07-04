@@ -31,7 +31,6 @@ export default function App() {
   const resetWechat = useChatStore((s) => s.resetAll)
   const importDoodle = useDoodleStore((s) => s.importData)
   const resetDoodle = useDoodleStore((s) => s.resetAll)
-  const doodleSettings = useDoodleStore((s) => s.settings)
 
   const getTarget = () =>
     previewWrapRef.current?.querySelector('[data-screenshot-target]') as HTMLElement | null
@@ -49,7 +48,6 @@ export default function App() {
         backgroundColor: exportBg,
         long: true,
         fitContent: mode === 'doodle',
-        font: mode === 'doodle' ? doodleSettings.font : undefined,
       })
       setStatus('截图已下载')
       setTimeout(() => setStatus(''), 2000)
@@ -63,7 +61,7 @@ export default function App() {
     if (!el) return
     try {
       setStatus('正在复制…')
-      await copyScreenshot(el, exportBg, true, mode === 'doodle', mode === 'doodle' ? doodleSettings.font : undefined)
+      await copyScreenshot(el, exportBg, true, mode === 'doodle')
       setStatus('已复制到剪贴板')
       setTimeout(() => setStatus(''), 2000)
     } catch {
