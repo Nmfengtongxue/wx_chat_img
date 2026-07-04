@@ -1,9 +1,5 @@
 import { hashSeed, sketchSquarePath } from '../../../utils/sketchPath'
 
-function avatarImgProps(url: string) {
-  return /^https?:\/\//.test(url) ? { crossOrigin: 'anonymous' as const } : {}
-}
-
 function PlaceholderIcon({ size, side }: { size: number; side: 'left' | 'right' }) {
   return (
     <svg width={size * 0.6} height={size * 0.6} viewBox="0 0 40 40" fill="none">
@@ -72,7 +68,7 @@ export function SketchAvatar({
         }}
       >
         {url ? (
-          <img src={url} alt="" className="w-full h-full object-cover" {...avatarImgProps(url)} />
+          <img src={url} alt="" className="w-full h-full object-cover" />
         ) : (
           <PlaceholderIcon size={size} side={side} />
         )}

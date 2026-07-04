@@ -21,10 +21,6 @@ function PlaceholderIcon({ size, side }: { size: number; side: 'left' | 'right' 
   )
 }
 
-function avatarImgProps(url: string) {
-  return /^https?:\/\//.test(url) ? { crossOrigin: 'anonymous' as const } : {}
-}
-
 export function ClassicAvatar({
   url,
   size,
@@ -47,7 +43,7 @@ export function ClassicAvatar({
       }}
     >
       {url ? (
-        <img src={url} alt="" className="w-full h-full object-cover" {...avatarImgProps(url)} />
+        <img src={url} alt="" className="w-full h-full object-cover" />
       ) : (
         <PlaceholderIcon size={size} side={side} />
       )}
