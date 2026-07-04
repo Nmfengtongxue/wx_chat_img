@@ -90,6 +90,20 @@
   .pat-hint-float {
     animation: pat-hint-float 1.2s ease-out forwards;
   }
+
+  body.is-exporting-screenshot::after {
+    content: '正在生成截图…';
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.92);
+    color: #334155;
+    font-size: 14px;
+    pointer-events: none;
+  }
 }
 
 @keyframes avatar-pat-bounce {

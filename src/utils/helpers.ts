@@ -10,9 +10,66 @@ export interface ScreenshotOptions {
   font?: DoodleFont
 }
 
-interface RestoreFn {
-  (): void
-}
+const EXPORT_STYLE_PROPS = [
+  'display',
+  'flex-direction',
+  'align-items',
+  'justify-content',
+  'flex',
+  'flex-shrink',
+  'flex-grow',
+  'flex-basis',
+  'width',
+  'height',
+  'min-width',
+  'max-width',
+  'min-height',
+  'max-height',
+  'margin-top',
+  'margin-right',
+  'margin-bottom',
+  'margin-left',
+  'padding-top',
+  'padding-right',
+  'padding-bottom',
+  'padding-left',
+  'font-family',
+  'font-size',
+  'font-weight',
+  'line-height',
+  'letter-spacing',
+  'color',
+  'background-color',
+  'border-top-width',
+  'border-right-width',
+  'border-bottom-width',
+  'border-left-width',
+  'border-top-color',
+  'border-right-color',
+  'border-bottom-color',
+  'border-left-color',
+  'border-top-style',
+  'border-right-style',
+  'border-bottom-style',
+  'border-left-style',
+  'border-radius',
+  'box-sizing',
+  'position',
+  'top',
+  'left',
+  'right',
+  'bottom',
+  'transform',
+  'white-space',
+  'word-break',
+  'overflow',
+  'vertical-align',
+  'text-align',
+  'object-fit',
+  'opacity',
+  'z-index',
+  'clip-path',
+] as const
 
 function isMobileDevice() {
   return (
@@ -22,7 +79,6 @@ function isMobileDevice() {
 }
 
 function getSafePixelRatio(width: number, height: number) {
-  // 移动端用 1 更稳，避免 canvas 超限导致空白
   if (isMobileDevice()) return 1
   const dpr = window.devicePixelRatio || 1
   let ratio = Math.min(dpr, 3)
@@ -43,7 +99,55 @@ function readExportWidth(el: HTMLElement): number {
   return Math.ceil(el.getBoundingClientRect().width) || el.offsetWidth || 390
 }
 
-function resetScrollChain(el: HTMLElement): RestoreFn {
+function isElementNode(node: Node): node is HTMLElement | SVGElement {
+  return node.nodeType === Node.ELEMENT_NODE
+}
+
+/** 把预览当前帧的计算样式写入克隆体，冻结手绘气泡 SVG 尺寸 */
+function syncComputedStyles(sourceRoot: HTMLElement, cloneRoot: HTMLElement) {
+  const sourceNodes = [sourceRoot, ...sourceRoot.querySelectorAll('*')]
+  const cloneNodes = [cloneRoot, ...cloneRoot.querySelectorAll('*')]
+  const len = Math.min(sourceNodes.length, cloneNodes.length)
+
+  for (let i = 0; i < len; i++) {
+    const src = sourceNodes[i]
+    const dst = cloneNodes[i]
+    if (!isElementNode(src) || !isElementNode(dst)) continue
+    if (src.tagName !== dst.tagName) continue
+
+    const cs = getComputedStyle(src)
+    for (const prop of EXPORT_STYLE_PROPS) {
+      const val = cs.getPropertyValue(prop)
+      if (val) dst.style.setProperty(prop, val)
+    }
+
+    if (dst instanceof SVGElement && src instanceof SVGElement) {
+      for (const attr of ['width', 'height', 'viewBox', 'style']) {
+        const v = src.getAttribute(attr)
+        if (v) dst.setAttribute(attr, v)
+      }
+    }
+
+    if (dst.tagName === 'IMG' && src instanceof HTMLImageElement && dst instanceof HTMLImageElement) {
+      dst.src = src.currentSrc || src.src
+    }
+  }
+}
+
+function sanitizeClone(clone: HTMLElement) {
+  clone.querySelectorAll('.pat-hint-float').forEach((el) => el.remove())
+  clone.querySelectorAll<HTMLElement>('[class*="ring-emerald"]').forEach((el) => {
+    el.className = el.className
+      .split(/\s+/)
+      .filter((c) => !c.startsWith('ring-') && !c.startsWith('ring-offset-'))
+      .join(' ')
+  })
+  clone.querySelectorAll('.avatar-pat-bounce').forEach((el) => {
+    el.classList.remove('avatar-pat-bounce')
+  })
+}
+
+function resetScrollChain(el: HTMLElement) {
   const saved: Array<{ node: HTMLElement; scrollTop: number; scrollLeft: number }> = []
   let node: HTMLElement | null = el
   while (node && node !== document.body) {
@@ -62,7 +166,7 @@ function resetScrollChain(el: HTMLElement): RestoreFn {
   }
 }
 
-function unlockOverflowChain(el: HTMLElement): RestoreFn {
+function unlockOverflowChain(el: HTMLElement) {
   const saved: Array<{
     node: HTMLElement
     overflow: string
@@ -106,7 +210,7 @@ function unlockOverflowChain(el: HTMLElement): RestoreFn {
   }
 }
 
-function prepareScreenshotStyles(root: HTMLElement, exportWidth: number): RestoreFn {
+function prepareLiveExportStyles(root: HTMLElement, exportWidth: number) {
   root.classList.add('screenshot-exporting')
   root.style.setProperty('--export-width', `${exportWidth}px`)
 
@@ -116,39 +220,10 @@ function prepareScreenshotStyles(root: HTMLElement, exportWidth: number): Restor
     marked.push(el)
   })
 
-  root.querySelectorAll('.pat-hint-float').forEach((el) => {
-    ;(el as HTMLElement).style.display = 'none'
-  })
-
   return () => {
     root.classList.remove('screenshot-exporting')
     root.style.removeProperty('--export-width')
     marked.forEach((el) => el.classList.remove('screenshot-exporting'))
-    root.querySelectorAll('.pat-hint-float').forEach((el) => {
-      ;(el as HTMLElement).style.display = ''
-    })
-  }
-}
-
-function lockElementWidth(el: HTMLElement, exportWidth: number): RestoreFn {
-  const saved = {
-    width: el.style.width,
-    minWidth: el.style.minWidth,
-    maxWidth: el.style.maxWidth,
-    boxSizing: el.style.boxSizing,
-    overflow: el.style.overflow,
-  }
-  el.style.width = `${exportWidth}px`
-  el.style.minWidth = `${exportWidth}px`
-  el.style.maxWidth = `${exportWidth}px`
-  el.style.boxSizing = 'border-box'
-  el.style.overflow = 'visible'
-  return () => {
-    el.style.width = saved.width
-    el.style.minWidth = saved.minWidth
-    el.style.maxWidth = saved.maxWidth
-    el.style.boxSizing = saved.boxSizing
-    el.style.overflow = saved.overflow
   }
 }
 
@@ -224,7 +299,7 @@ async function isMostlyBlankPng(dataUrl: string): Promise<boolean> {
   })
 }
 
-async function renderElementToPng(
+async function renderToPng(
   target: HTMLElement,
   opts: {
     backgroundColor: string
@@ -252,9 +327,12 @@ async function renderElementToPng(
   })
 }
 
-/** 直接截取可见预览节点（移动端 Safari 必须可见才能绘制） */
-async function captureVisibleElement(
-  element: HTMLElement,
+/**
+ * 策略 A（WYSIWYG）：克隆当前预览帧 → 同步样式 → 可见挂载 → 截图
+ * 不修改原预览 DOM，不触发 resize，手绘 SVG 尺寸与预览一致
+ */
+async function captureFrozenClone(
+  source: HTMLElement,
   options: {
     backgroundColor: string
     long: boolean
@@ -262,21 +340,79 @@ async function captureVisibleElement(
     font?: DoodleFont
   },
 ): Promise<string> {
-  const exportWidth = readExportWidth(element)
+  const exportWidth = readExportWidth(source)
+  const height =
+    options.long && options.fitContent
+      ? Math.max(source.scrollHeight, source.offsetHeight, 1)
+      : Math.max(source.offsetHeight, source.getBoundingClientRect().height, 1)
 
-  if (options.font) {
-    await ensureFontLoaded(options.font)
+  const clone = source.cloneNode(true) as HTMLElement
+  sanitizeClone(clone)
+  syncComputedStyles(source, clone)
+
+  clone.classList.add('screenshot-exporting')
+  clone.style.setProperty('--export-width', `${exportWidth}px`)
+  clone.style.width = `${exportWidth}px`
+  clone.style.minWidth = `${exportWidth}px`
+  clone.style.maxWidth = `${exportWidth}px`
+  clone.style.height = `${height}px`
+  clone.style.boxSizing = 'border-box'
+  clone.style.overflow = 'visible'
+  clone.style.margin = '0'
+  clone.style.background = options.backgroundColor
+
+  const host = document.createElement('div')
+  host.id = 'screenshot-export-host'
+  host.style.cssText = [
+    'position:fixed',
+    'left:0',
+    'top:0',
+    `width:${exportWidth}px`,
+    'overflow:visible',
+    'z-index:2147483646',
+    'pointer-events:none',
+  ].join(';')
+  host.appendChild(clone)
+  document.body.appendChild(host)
+
+  try {
+    await waitForImages(clone)
+    await waitForStableLayout(clone)
+
+    const pixelRatio = getSafePixelRatio(exportWidth, height)
+    const fontEmbedCSS = await buildFontEmbedCSS(source)
+
+    return await renderToPng(clone, {
+      backgroundColor: options.backgroundColor,
+      exportWidth,
+      height,
+      fontEmbedCSS,
+      pixelRatio,
+    })
+  } finally {
+    host.remove()
   }
-  await waitForStableLayout(element)
+}
 
+/**
+ * 策略 B（回退）：直接截可见节点 + 解除 overflow（旧版能出图的路径）
+ * 不触发 resize，尽量减少布局漂移
+ */
+async function captureLiveElement(
+  element: HTMLElement,
+  options: {
+    backgroundColor: string
+    long: boolean
+    fitContent: boolean
+  },
+): Promise<string> {
+  const exportWidth = readExportWidth(element)
   const restoreScroll = resetScrollChain(element)
   const restoreOverflow = unlockOverflowChain(element)
-  const restoreWidth = lockElementWidth(element, exportWidth)
-  const restoreStyles = prepareScreenshotStyles(element, exportWidth)
+  const restoreStyles = prepareLiveExportStyles(element, exportWidth)
 
   try {
     await waitForImages(element)
-    window.dispatchEvent(new Event('resize'))
     await waitForStableLayout(element)
 
     const height =
@@ -287,34 +423,15 @@ async function captureVisibleElement(
     const pixelRatio = getSafePixelRatio(exportWidth, height)
     const fontEmbedCSS = await buildFontEmbedCSS(element)
 
-    const dataUrl = await renderElementToPng(element, {
+    return await renderToPng(element, {
       backgroundColor: options.backgroundColor,
       exportWidth,
       height,
       fontEmbedCSS,
       pixelRatio,
     })
-
-    if (!(await isMostlyBlankPng(dataUrl))) {
-      return dataUrl
-    }
-
-    // 回退：去掉 fontEmbed 再试（部分 iOS 会因字体内联失败而空白）
-    const retry = await renderElementToPng(element, {
-      backgroundColor: options.backgroundColor,
-      exportWidth,
-      height,
-      fontEmbedCSS: undefined,
-      pixelRatio: 1,
-    })
-    if (!(await isMostlyBlankPng(retry))) {
-      return retry
-    }
-
-    throw new Error('截图内容为空')
   } finally {
     restoreStyles()
-    restoreWidth()
     restoreOverflow()
     restoreScroll()
   }
@@ -329,12 +446,58 @@ export async function captureElementToPng(
     font?: DoodleFont
   },
 ): Promise<string> {
-  return captureVisibleElement(element, {
+  const opts = {
     backgroundColor: options.backgroundColor,
     long: options.long ?? true,
     fitContent: options.fitContent ?? true,
     font: options.font,
-  })
+  }
+
+  if (opts.font) {
+    await ensureFontLoaded(opts.font)
+  }
+  await waitForStableLayout(element)
+
+  document.body.classList.add('is-exporting-screenshot')
+
+  try {
+    let dataUrl = await captureFrozenClone(element, opts)
+    if (!(await isMostlyBlankPng(dataUrl))) {
+      return dataUrl
+    }
+
+    dataUrl = await captureLiveElement(element, opts)
+    if (!(await isMostlyBlankPng(dataUrl))) {
+      return dataUrl
+    }
+
+    // 最后回退：无 fontEmbed
+    const exportWidth = readExportWidth(element)
+    const height = Math.max(element.scrollHeight, element.offsetHeight, 1)
+    const restoreScroll = resetScrollChain(element)
+    const restoreOverflow = unlockOverflowChain(element)
+    const restoreStyles = prepareLiveExportStyles(element, exportWidth)
+    try {
+      dataUrl = await renderToPng(element, {
+        backgroundColor: opts.backgroundColor,
+        exportWidth,
+        height,
+        fontEmbedCSS: undefined,
+        pixelRatio: 1,
+      })
+    } finally {
+      restoreStyles()
+      restoreOverflow()
+      restoreScroll()
+    }
+
+    if (await isMostlyBlankPng(dataUrl)) {
+      throw new Error('截图内容为空')
+    }
+    return dataUrl
+  } finally {
+    document.body.classList.remove('is-exporting-screenshot')
+  }
 }
 
 export async function exportScreenshot(
@@ -351,24 +514,8 @@ export async function exportScreenshot(
 
   const filename = opts.filename ?? '微信聊天截图.png'
   const blob = await (await fetch(dataUrl)).blob()
-
-  if (isMobileDevice()) {
-    // iOS Safari 对 download 支持差，新窗口打开更可靠
-    const url = URL.createObjectURL(blob)
-    const opened = window.open(url, '_blank')
-    if (!opened) {
-      const link = document.createElement('a')
-      link.href = url
-      link.download = filename
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
-    }
-    setTimeout(() => URL.revokeObjectURL(url), 8000)
-    return
-  }
-
   const url = URL.createObjectURL(blob)
+
   const link = document.createElement('a')
   link.href = url
   link.download = filename
@@ -376,7 +523,12 @@ export async function exportScreenshot(
   document.body.appendChild(link)
   link.click()
   link.remove()
-  URL.revokeObjectURL(url)
+
+  if (isMobileDevice()) {
+    setTimeout(() => URL.revokeObjectURL(url), 8000)
+  } else {
+    URL.revokeObjectURL(url)
+  }
 }
 
 export async function copyScreenshot(
@@ -400,7 +552,7 @@ export async function copyScreenshot(
       await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
       return
     } catch {
-      // 移动端降级
+      /* fallback */
     }
   }
 
