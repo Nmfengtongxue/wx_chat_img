@@ -1,5 +1,19 @@
 {
   "envId": "wx-chat-images-d5g75hzivc47793bd",
   "version": "2.0",
-  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json"
+  "$schema": "https://static.cloudbase.net/cli/cloudbaserc.schema.json",
+  "app": {
+    "serviceName": "wx-chat-img",
+    "framework": "vite",
+    "installCommand": "npm ci",
+    "buildCommand": "npm run build",
+    "outputDir": "dist",
+    "deployPath": "/",
+    "ignore": [
+      "2026-07-04  头像素材/**",
+      "cutout-batch.log",
+      "node_modules/**",
+      ".git/**"
+    ]
+  }
 }

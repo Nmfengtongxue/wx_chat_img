@@ -51,6 +51,29 @@ npm run dev
 - GitHub Pages：https://nmfengtongxue.github.io/wx_chat_img/
 - Cloudflare Pages：https://wx-chat-img.pages.dev/（需在 GitHub 配置 `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`）
 - 腾讯云 CloudBase：https://wx-chat-images-d5g75hzivc47793bd-1253877908.tcloudbaseapp.com/
+  - 应用访问（版本管理）：https://wx-chat-img-wx-chat-images-d5g75hzivc47793bd.webapps.tcloudbase.com/
+
+## CloudBase 部署与版本管理
+
+项目已切换为 [`tcb app deploy`](https://docs.cloudbase.net/cli-v1/app/management)（替代 `hosting deploy`），每次部署会生成可追溯的版本记录，可在控制台回滚。
+
+```bash
+# 云端构建 + 部署（推荐，约 1 分钟）
+npm run deploy:cloudbase
+
+# 本地先 build，再上传 dist（更快，适合调试）
+npm run deploy:cloudbase:local
+
+# 查看版本历史
+npm run deploy:cloudbase:versions
+
+# 查看当前线上版本信息
+npm run deploy:cloudbase:info
+```
+
+**回滚：** 打开 [CloudBase 控制台](https://tcb.cloud.tencent.com/dev?envId=wx-chat-images-d5g75hzivc47793bd#/static-hosting) → 静态网站托管 → 应用 `wx-chat-img` → 版本记录 → 选择历史版本回滚。
+
+配置见根目录 `cloudbaserc.json` 的 `app` 字段；推送到 `main` 分支会通过 GitHub Actions 自动执行 `tcb app deploy`。
 
 ## 构建
 
